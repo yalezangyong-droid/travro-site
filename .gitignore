@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Claude Code internals (worktree metadata — not project files)
+.claude/worktrees/
+.claude/launch.json
+
+# Editor
+.vscode/
+.idea/
+
+# Misc
+*.log

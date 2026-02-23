@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Page Not Found — TRAVRO</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <!-- Google Fonts: Inter 400, 500, 600 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Shared brand styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- 404-specific layout (no extra files created) -->
+  <style>
+    .page-404 {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: var(--header-height);
+      background-color: var(--color-background);
+    }
+
+    .page-404__content {
+      text-align: center;
+      padding: var(--space-lg);
+      max-width: 480px;
+    }
+
+    .page-404__code {
+      display: block;
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-xl);
+    }
+
+    .page-404__heading {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--tracking-heading);
+      line-height: 1.25;
+      color: var(--color-text);
+      margin-bottom: var(--space-md);
+    }
+
+    .page-404__message {
+      font-size: var(--font-size-base);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-xl);
+    }
+
+    .page-404__link {
+      display: inline-block;
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--color-text);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 3px;
+      transition: border-color var(--transition-base);
+    }
+
+    .page-404__link:hover {
+      border-color: var(--color-text);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fixed header — .is-scrolled applied directly; no hero behind it -->
+  <header class="site-header is-scrolled">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="/" class="nav__logo">TRAVRO</a>
+    </nav>
+  </header>
+
+  <main class="page-404" aria-labelledby="error-heading">
+    <div class="page-404__content">
+
+      <span class="page-404__code">404</span>
+
+      <h1 class="page-404__heading" id="error-heading">
+        This page doesn't exist.
+      </h1>
+
+      <p class="page-404__message">
+        The luggage is intact. The URL is not.
+      </p>
+
+      <a href="/" class="page-404__link">Back to TRAVRO &rarr;</a>
+
+    </div>
+  </main>
+
+</body>
+</html>

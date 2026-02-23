@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Hairline perimeter — gives form on any background -->
+  <rect x="1" y="1" width="30" height="30" stroke="#2C2C2C" stroke-width="1.5"/>
+  <!-- TR monogram — vertically centred, tight tracking -->
+  <text
+    x="16"
+    y="21"
+    font-family="system-ui, -apple-system, Arial, sans-serif"
+    font-size="13"
+    font-weight="600"
+    fill="#2C2C2C"
+    text-anchor="middle"
+    letter-spacing="1.5"
+  >TR</text>
+</svg>

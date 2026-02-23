@@ -1,0 +1,988 @@
+/* ============================================================
+   TRAVRO — style.css
+   Phase 1: CSS Foundation
+   Brand: Design-forward luggage. 25 years of engineering.
+   Design north star: Architectural minimalism + Quiet Confidence
+   ============================================================ */
+
+
+/* ============================================================
+   1. CSS CUSTOM PROPERTIES
+   ============================================================ */
+
+:root {
+
+  /* --- Colors --- */
+  --color-primary:          #2C2C2C;   /* Deep charcoal / warm black */
+  --color-background:       #F5F2EE;   /* Off-white stone */
+  --color-accent:           #8B8A6E;   /* Sage / olive (temporary — TBD by designer) */
+  --color-text:             #2C2C2C;   /* Same as primary */
+  --color-text-secondary:   #7A7A7A;   /* Mid-gray for supporting text */
+  --color-surface:          #FFFFFF;   /* Pure white — use sparingly */
+  --color-border:           #D6D3CE;   /* Hairline borders */
+  --color-placeholder:      #E0DDD8;   /* Placeholder image fill */
+
+  /* --- Typography --- */
+  --font-family:            'Inter', system-ui, -apple-system, sans-serif;
+  --font-weight-regular:    400;
+  --font-weight-medium:     500;
+  --font-weight-semibold:   600;
+
+  /* --- Font sizes (fluid via clamp in components) --- */
+  --font-size-xs:    0.75rem;    /*  12px */
+  --font-size-sm:    0.875rem;   /*  14px */
+  --font-size-base:  1rem;       /*  16px */
+  --font-size-lg:    1.125rem;   /*  18px */
+  --font-size-xl:    1.25rem;    /*  20px */
+  --font-size-2xl:   1.5rem;     /*  24px */
+  --font-size-3xl:   2rem;       /*  32px */
+  --font-size-4xl:   2.5rem;     /*  40px */
+  --font-size-5xl:   3.5rem;     /*  56px */
+
+  /* --- Spacing scale --- */
+  --space-xs:   0.5rem;    /*   8px */
+  --space-sm:   1rem;      /*  16px */
+  --space-md:   1.5rem;    /*  24px */
+  --space-lg:   2rem;      /*  32px */
+  --space-xl:   3rem;      /*  48px */
+  --space-2xl:  4rem;      /*  64px */
+  --space-3xl:  6rem;      /*  96px */
+  --space-4xl:  8rem;      /* 128px */
+
+  /* --- Layout --- */
+  --max-width:        1200px;
+  --max-width-text:    760px;
+  --header-height:      72px;
+
+  /* --- Letter-spacing --- */
+  --tracking-brand:    0.18em;   /* TRAVRO wordmark */
+  --tracking-heading:  0.02em;   /* Section headings */
+  --tracking-caps:     0.08em;   /* Uppercase labels/badges */
+
+  /* --- Transitions --- */
+  --transition-fast:   150ms ease;
+  --transition-base:   220ms ease;
+  --transition-slow:   380ms ease;
+
+}
+
+
+/* ============================================================
+   2. RESET
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+
+/* ============================================================
+   3. BASE TYPOGRAPHY
+   ============================================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-heading);
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+p {
+  line-height: 1.7;
+}
+
+p + p {
+  margin-top: var(--space-md);
+}
+
+
+/* ============================================================
+   4. LAYOUT UTILITIES
+   ============================================================ */
+
+/* Standard container */
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+}
+
+/* Narrow text container — story, founder */
+.container--narrow {
+  max-width: var(--max-width-text);
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+}
+
+/* Section-level vertical rhythm */
+.section {
+  padding-block: var(--space-4xl);
+}
+
+/* Horizontal rule — used between sub-sections */
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin-block: var(--space-4xl);
+}
+
+
+/* ============================================================
+   5. NAVIGATION HEADER
+   ============================================================ */
+
+.site-header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 100;
+  height: var(--header-height);
+
+  /* Default: transparent over hero */
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color var(--transition-slow),
+    border-color var(--transition-slow);
+}
+
+/* JS adds this class on scroll */
+.site-header.is-scrolled {
+  background-color: var(--color-background);
+  border-bottom-color: var(--color-border);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+}
+
+/* Brand wordmark in nav */
+.nav__logo {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-brand);
+  text-transform: uppercase;
+  color: var(--color-text);
+  transition: opacity var(--transition-base);
+}
+
+.nav__logo:hover {
+  opacity: 0.65;
+}
+
+/* Desktop nav links */
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.nav__link {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-base);
+}
+
+.nav__link:hover {
+  color: var(--color-text);
+}
+
+/* Mobile hamburger toggle — hidden on desktop */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 22px;
+  height: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav__toggle-bar {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--color-text);
+  transition:
+    transform var(--transition-base),
+    opacity  var(--transition-base);
+  transform-origin: center;
+}
+
+/* Animate toggle → X when nav is open */
+.nav__toggle.is-active .nav__toggle-bar:nth-child(1) {
+  transform: translateY(6.25px) rotate(45deg);
+}
+.nav__toggle.is-active .nav__toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+.nav__toggle.is-active .nav__toggle-bar:nth-child(3) {
+  transform: translateY(-6.25px) rotate(-45deg);
+}
+
+/* Mobile nav drawer — hidden by default */
+.nav__mobile {
+  display: none;
+  position: fixed;
+  inset-block-start: var(--header-height);
+  inset-inline: 0;
+  z-index: 99;
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-md) var(--space-lg);
+  flex-direction: column;
+}
+
+.nav__mobile.is-open {
+  display: flex;
+}
+
+.nav__mobile-link {
+  display: block;
+  padding-block: var(--space-sm);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-border);
+  transition: color var(--transition-base);
+}
+
+.nav__mobile-link:last-child {
+  border-bottom: none;
+}
+
+.nav__mobile-link:hover {
+  color: var(--color-text);
+}
+
+
+/* ============================================================
+   6. PLACEHOLDER IMAGES
+   Styled gray rectangles — replaced with real WebP in production
+   ============================================================ */
+
+.placeholder-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--color-placeholder);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: var(--space-sm);
+  user-select: none;
+}
+
+
+/* ============================================================
+   7. EMAIL FORM — shared component
+   Used in Hero and Footer (inverted variant)
+   ============================================================ */
+
+.email-form {
+  display: flex;
+  gap: 0;
+  max-width: 460px;
+}
+
+.email-form__input {
+  flex: 1;
+  min-width: 0;                       /* prevent flex overflow */
+  padding: 0.875rem var(--space-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-right: none;                 /* shared edge with button */
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color var(--transition-base);
+}
+
+.email-form__input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.email-form__input:focus {
+  border-color: var(--color-accent);
+}
+
+.email-form__button {
+  flex-shrink: 0;
+  padding: 0.875rem var(--space-lg);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-surface);
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  white-space: nowrap;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.email-form__button:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* Success state (JS toggles .is-visible) */
+.email-form__success {
+  display: none;
+  margin-top: var(--space-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+  letter-spacing: 0.03em;
+}
+
+.email-form__success.is-visible {
+  display: block;
+}
+
+/* --- Footer (dark background) variant --- */
+.email-form--inverted .email-form__input {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: var(--color-surface);
+}
+
+.email-form--inverted .email-form__input::placeholder {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.email-form--inverted .email-form__input:focus {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.email-form--inverted .email-form__button {
+  background-color: var(--color-surface);
+  border-color: var(--color-surface);
+  color: var(--color-primary);
+}
+
+.email-form--inverted .email-form__button:hover {
+  background-color: var(--color-placeholder);
+  border-color: var(--color-placeholder);
+}
+
+.email-form--inverted .email-form__success {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+
+/* ============================================================
+   8. SECTION 1 — HERO
+   Layout: 2-column grid. Text left, image right.
+   ============================================================ */
+
+.hero {
+  min-height: 100vh;
+  padding-block-start: calc(var(--header-height) + var(--space-4xl));
+  padding-block-end: var(--space-4xl);
+  background-color: var(--color-background);
+  display: flex;
+  align-items: center;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: center;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+  width: 100%;
+}
+
+/* Left column: content */
+.hero__content {
+  /* inherits grid cell */
+}
+
+.hero__wordmark {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-brand);
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-bottom: var(--space-xl);
+}
+
+.hero__tagline {
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-heading);
+  line-height: 1.1;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+}
+
+.hero__subtitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+.hero__badge {
+  display: inline-block;
+  margin-top: var(--space-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  padding: 0.375rem var(--space-sm);
+}
+
+/* Right column: image */
+.hero__image {
+  /* inherits grid cell */
+}
+
+.hero__placeholder {
+  aspect-ratio: 3 / 2;
+}
+
+
+/* ============================================================
+   9. SECTION 2 — OUR STORY
+   Layout: centered text block, max-width 760px
+   ============================================================ */
+
+.story {
+  padding-block: var(--space-4xl);
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.story__inner {
+  max-width: var(--max-width-text);
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+}
+
+.story__heading {
+  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-heading);
+  line-height: 1.25;
+  color: var(--color-text);
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+
+.story__body {
+  font-size: var(--font-size-lg);
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  text-align: left;
+}
+
+
+/* ============================================================
+   10. SECTION 3 — DESIGN PHILOSOPHY
+   Layout: 3-column grid on desktop, stacked on mobile
+   ============================================================ */
+
+.philosophy {
+  padding-block: var(--space-4xl);
+  background-color: var(--color-background);
+}
+
+.philosophy__inner {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+}
+
+.philosophy__heading {
+  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-text);
+  margin-bottom: var(--space-3xl);
+  text-align: center;
+}
+
+.philosophy__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2xl);
+}
+
+/* Each philosophy block */
+.philosophy__block {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-lg);
+}
+
+.philosophy__block-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.philosophy__block-text {
+  font-size: var(--font-size-base);
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+}
+
+
+/* ============================================================
+   11. SECTION 4 — PRODUCT PREVIEW
+   Layout: K35 hero (2-column) + 3-item coming soon grid
+   ============================================================ */
+
+.products {
+  padding-block: var(--space-4xl);
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.products__inner {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+}
+
+/* K35 — hero product row */
+.product-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: start;
+  margin-bottom: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Left column: image stack */
+.product-hero__images {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.product-hero__placeholder {
+  aspect-ratio: 4 / 3;
+}
+
+/* Right column: copy */
+.product-hero__content {
+  padding-top: var(--space-sm);
+}
+
+.product-hero__label {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.product-hero__name {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-heading);
+  line-height: 1.2;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.product-hero__subtitle {
+  font-size: var(--font-size-lg);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.product-hero__description {
+  font-size: var(--font-size-base);
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+.product-hero__price {
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 0.5rem var(--space-md);
+}
+
+/* Coming soon grid — 3 smaller products */
+.coming-soon__heading {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+.coming-soon__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.coming-soon__item {
+  /* inherits grid cell */
+}
+
+.coming-soon__placeholder {
+  aspect-ratio: 3 / 2;
+  margin-bottom: var(--space-md);
+}
+
+.coming-soon__name {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.coming-soon__tagline {
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.coming-soon__badge {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  padding: 0.25rem 0.625rem;
+}
+
+
+/* ============================================================
+   12. SECTION 5 — ABOUT THE FOUNDER
+   Layout: centered text block, max-width 760px
+   ============================================================ */
+
+.founder {
+  padding-block: var(--space-4xl);
+  background-color: var(--color-background);
+}
+
+.founder__inner {
+  max-width: var(--max-width-text);
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+}
+
+.founder__heading {
+  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-heading);
+  line-height: 1.25;
+  color: var(--color-text);
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+
+.founder__body {
+  font-size: var(--font-size-lg);
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  text-align: left;
+}
+
+
+/* ============================================================
+   13. SECTION 6 — FOOTER
+   Dark background. Email CTA + social links + legal.
+   ============================================================ */
+
+.site-footer {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  padding-block-start: var(--space-4xl);
+  padding-block-end: var(--space-xl);
+}
+
+.footer__inner {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+}
+
+/* Email CTA block */
+.footer__cta {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer__cta-heading {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-surface);
+  margin-bottom: var(--space-lg);
+}
+
+/* Center the form within the CTA block */
+.footer__cta .email-form {
+  margin-inline: auto;
+}
+
+/* Footer bottom row */
+.footer__bottom {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.footer__brand-block {
+  /* left: brand name + taglines */
+}
+
+.footer__brand {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-brand);
+  text-transform: uppercase;
+  color: var(--color-surface);
+  margin-bottom: 0.375rem;
+}
+
+.footer__brand-tagline {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.6;
+}
+
+/* Social links */
+.footer__social {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.footer__social-link {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color var(--transition-base);
+}
+
+.footer__social-link:hover {
+  color: var(--color-surface);
+}
+
+/* Legal line */
+.footer__legal {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.footer__copyright {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.03em;
+}
+
+
+/* ============================================================
+   14. RESPONSIVE — MOBILE ≤ 768px
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* Tighten vertical spacing at mobile */
+  :root {
+    --space-4xl: 4rem;
+    --space-3xl: 3rem;
+  }
+
+  /* --- Navigation --- */
+
+  /* Hide desktop links, show hamburger */
+  .nav__links {
+    display: none;
+  }
+
+  .nav__toggle {
+    display: flex;
+  }
+
+  /* --- Section 1: Hero --- */
+
+  .hero {
+    min-height: auto;
+    padding-block-start: calc(var(--header-height) + var(--space-xl));
+    padding-block-end: var(--space-3xl);
+    align-items: flex-start;
+  }
+
+  /* Stack columns: image on top, content below */
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .hero__image {
+    order: -1;
+  }
+
+  /* --- Email form: stack vertically --- */
+
+  .email-form {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  /* Restore right border; remove bottom border for vertical join */
+  .email-form__input {
+    border-right: 1px solid var(--color-border);
+    border-bottom: none;
+  }
+
+  .email-form__button {
+    width: 100%;
+  }
+
+  /* Inverted variant (footer) */
+  .email-form--inverted .email-form__input {
+    border-right: 1px solid rgba(255, 255, 255, 0.22);
+    border-bottom: none;
+  }
+
+  /* --- Section 3: Design Philosophy --- */
+
+  /* 3-column → single column */
+  .philosophy__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  /* --- Section 4: Product Preview --- */
+
+  /* K35 hero: 2-column → single column */
+  .product-hero {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  /* Coming soon: 3-column → single column */
+  .coming-soon__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  /* --- Section 6: Footer --- */
+
+  /* Stack brand + social vertically */
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-lg);
+  }
+
+}

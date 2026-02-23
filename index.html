@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============================================================
+       PRIMARY META
+       ============================================================ -->
+  <title>TRAVRO — Design-Forward Luggage | 25 Years of Engineering | Honest Pricing</title>
+  <meta name="description" content="TRAVRO is luggage built by the manufacturer. 25 years of expertise, Hinomoto wheels, YKK zippers, design-forward aesthetics — at a price that makes sense. Coming to Kickstarter 2026.">
+  <link rel="canonical" href="https://travro.com/">
+
+  <!-- ============================================================
+       OPEN GRAPH + TWITTER
+       ============================================================ -->
+  <meta property="og:title" content="TRAVRO — Travel in Your Own Light">
+  <meta property="og:description" content="Design-forward luggage. 25 years of engineering. Honest pricing. Coming to Kickstarter 2026.">
+  <meta property="og:image" content="/images/og-image.jpg">
+  <meta property="og:url" content="https://travro.com">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- ============================================================
+       FAVICON
+       ============================================================ -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <!-- ============================================================
+       GOOGLE FONTS — Inter 400, 500, 600
+       ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- ============================================================
+       STYLES
+       ============================================================ -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Visually-hidden utility — for accessible form labels -->
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+
+  <!-- ============================================================
+       STRUCTURED DATA — Organization schema
+       ============================================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TRAVRO",
+    "url": "https://travro.com",
+    "logo": "https://travro.com/images/travro-logo.svg",
+    "description": "Design-forward luggage brand. 25 years of manufacturing expertise.",
+    "foundingDate": "2025",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Travel Trail Goods Inc."
+    }
+  }
+  </script>
+
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION HEADER
+       Fixed. Transparent over hero → solid on scroll (JS adds .is-scrolled).
+       ============================================================ -->
+  <header class="site-header" id="site-header">
+    <nav class="nav" aria-label="Main navigation">
+
+      <a href="#hero" class="nav__logo">TRAVRO</a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="#story"      class="nav__link">Our Story</a></li>
+        <li><a href="#philosophy" class="nav__link">Design</a></li>
+        <li><a href="#products"   class="nav__link">Products</a></li>
+        <li><a href="#founder"    class="nav__link">About</a></li>
+      </ul>
+
+      <!-- Hamburger — visible on mobile only -->
+      <button
+        class="nav__toggle"
+        id="nav-toggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+    </nav>
+  </header>
+
+  <!-- Mobile navigation drawer (JS toggles .is-open) -->
+  <nav class="nav__mobile" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="#story"      class="nav__mobile-link">Our Story</a>
+    <a href="#philosophy" class="nav__mobile-link">Design</a>
+    <a href="#products"   class="nav__mobile-link">Products</a>
+    <a href="#founder"    class="nav__mobile-link">About</a>
+  </nav>
+
+
+  <main>
+
+    <!-- ============================================================
+         SECTION 1 — HERO
+         Layout: 2-column grid. Content left, product image right.
+         ============================================================ -->
+    <section class="hero" id="hero" aria-labelledby="hero-tagline">
+      <div class="hero__grid">
+
+        <!-- Left column: brand + copy + form -->
+        <div class="hero__content">
+
+          <span class="hero__wordmark" aria-hidden="true">TRAVRO</span>
+
+          <h1 class="hero__tagline" id="hero-tagline">Travel in your own light.</h1>
+
+          <p class="hero__subtitle">Design-forward luggage. 25 years of engineering. Honest pricing.</p>
+
+          <form
+            class="email-form"
+            id="hero-form"
+            action="#"
+            method="post"
+            novalidate
+            aria-label="Join the waitlist"
+          >
+            <label class="sr-only" for="hero-email">Email address</label>
+            <input
+              class="email-form__input"
+              type="email"
+              id="hero-email"
+              name="email"
+              placeholder="Enter your email"
+              required
+              autocomplete="email"
+            >
+            <button class="email-form__button" type="submit">Join the Journey</button>
+          </form>
+          <p class="email-form__success" id="hero-form-success" aria-live="polite">
+            You're on the list. We'll be in touch.
+          </p>
+
+          <span class="hero__badge">Coming to Kickstarter 2026</span>
+
+        </div>
+
+        <!-- Right column: hero product image -->
+        <div class="hero__image">
+          <div
+            class="placeholder-img hero__placeholder"
+            role="img"
+            aria-label="K35 carry-on luggage hero shot"
+          >K35 Hero Image — 1200×800</div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 2 — OUR STORY
+         Layout: centered text block, max-width 760px.
+         ============================================================ -->
+    <section class="story" id="story" aria-labelledby="story-heading">
+      <div class="story__inner">
+
+        <h2 class="story__heading" id="story-heading">
+          We didn't start with a brand. We started with a factory floor.
+        </h2>
+
+        <div class="story__body">
+          <p>For 25 years, a factory in Jiangxi, China has been the silent force behind luggage brands you already know. They didn't build a brand. They built expertise — one hinge, one wheel, one zipper at a time.</p>
+          <p>TRAVRO is what happens when that expertise finally gets its own name.</p>
+          <p>We're not a brand that outsources manufacturing. We are the manufacturer. That's why we can offer Hinomoto wheels, YKK zippers, and TSA-approved locks at a price point that doesn't require a coupon code to feel fair.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 3 — DESIGN PHILOSOPHY
+         Layout: 3-column grid on desktop, stacked on mobile.
+         ============================================================ -->
+    <section class="philosophy" id="philosophy" aria-labelledby="philosophy-heading">
+      <div class="philosophy__inner">
+
+        <h2 class="philosophy__heading" id="philosophy-heading">Three rules. No exceptions.</h2>
+
+        <div class="philosophy__grid">
+
+          <article class="philosophy__block">
+            <h3 class="philosophy__block-title">One-tone system.</h3>
+            <p class="philosophy__block-text">Shell, handle, wheels, zipper — all the same color. No visual noise. This isn't a design choice; it's a design discipline.</p>
+          </article>
+
+          <article class="philosophy__block">
+            <h3 class="philosophy__block-title">Engineering-grade components.</h3>
+            <p class="philosophy__block-text">Hinomoto wheels. YKK zippers. TSA-approved locks. The same components inside luggage that costs twice as much.</p>
+          </article>
+
+          <article class="philosophy__block">
+            <h3 class="philosophy__block-title">Quiet confidence.</h3>
+            <p class="philosophy__block-text">We don't make the loudest suitcase at the carousel. We make the one you trust to show up intact after 50 flights.</p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 4 — PRODUCT PREVIEW
+         Layout: K35 hero (2-column) + 3-item Coming Soon grid.
+         ============================================================ -->
+    <section class="products" id="products" aria-labelledby="k35-heading">
+      <div class="products__inner">
+
+        <!-- K35 — hero product -->
+        <div class="product-hero">
+
+          <!-- Left: image stack (expanded + folded views) -->
+          <div class="product-hero__images">
+            <div
+              class="placeholder-img product-hero__placeholder"
+              role="img"
+              aria-label="K35 carry-on, expanded to full size"
+            >K35-expanded — 800×600</div>
+            <div
+              class="placeholder-img product-hero__placeholder"
+              role="img"
+              aria-label="K35 carry-on, folded to half size"
+            >K35-folded — 800×600</div>
+          </div>
+
+          <!-- Right: product copy -->
+          <div class="product-hero__content">
+            <span class="product-hero__label">Hero Product</span>
+            <h2 class="product-hero__name" id="k35-heading">K35 — The Carry-On That Folds in Half</h2>
+            <p class="product-hero__subtitle">Big on travel, small on storage.</p>
+            <p class="product-hero__description">Your suitcase takes up more space in your apartment than your coffee table. And you use your coffee table every day. The K35 folds to half its size when you're home. Opens to a full-size carry-on in 10 seconds.</p>
+            <span class="product-hero__price">Starting from $99 on Kickstarter</span>
+          </div>
+
+        </div>
+
+        <!-- Coming Soon — 3-item grid -->
+        <div class="coming-soon">
+          <h3 class="coming-soon__heading">Coming Soon</h3>
+
+          <div class="coming-soon__grid">
+
+            <article class="coming-soon__item">
+              <div
+                class="placeholder-img coming-soon__placeholder"
+                role="img"
+                aria-label="K07 Mobile Office luggage"
+              >K07 — 600×400</div>
+              <h4 class="coming-soon__name">K07 Mobile Office</h4>
+              <p class="coming-soon__tagline">Your office, anywhere. Front-open design fits your 16" MacBook.</p>
+              <span class="coming-soon__badge">Coming Soon</span>
+            </article>
+
+            <article class="coming-soon__item">
+              <div
+                class="placeholder-img coming-soon__placeholder"
+                role="img"
+                aria-label="LK001 Aluminum Frame luggage"
+              >LK001 — 600×400</div>
+              <h4 class="coming-soon__name">LK001 Aluminum Frame</h4>
+              <p class="coming-soon__tagline">25 years in the making. Our flagship.</p>
+              <span class="coming-soon__badge">Coming Soon</span>
+            </article>
+
+            <article class="coming-soon__item">
+              <div
+                class="placeholder-img coming-soon__placeholder"
+                role="img"
+                aria-label="K34 Artist Canvas luggage"
+              >K34 — 600×400</div>
+              <h4 class="coming-soon__name">K34 Artist Canvas</h4>
+              <p class="coming-soon__tagline">Your luggage is a canvas. Limited-edition UV art surface.</p>
+              <span class="coming-soon__badge">Coming Soon</span>
+            </article>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 5 — ABOUT THE FOUNDER
+         Layout: centered text block, max-width 760px.
+         ============================================================ -->
+    <section class="founder" id="founder" aria-labelledby="founder-heading">
+      <div class="founder__inner">
+
+        <h2 class="founder__heading" id="founder-heading">Built by someone who knows both sides.</h2>
+
+        <div class="founder__body">
+          <p>TRAVRO started with a gap that most people never see. On one side: a factory with 25 years of engineering mastery — the kind of place that makes luggage for brands you already own. On the other side: American travelers paying $300 for carry-ons built with the exact same components.</p>
+          <p>Will Zang saw both sides. A decade at Maersk — the world's largest shipping company — building markets across three continents. Yale School of Management. And a simple question that wouldn't go away: why does great luggage engineering always hide behind someone else's name?</p>
+          <p>TRAVRO is the answer. Not a brand that found a factory. A factory that finally built its own brand.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       SECTION 6 — FOOTER
+       Dark background (#2C2C2C). Email CTA, social links, legal.
+       ============================================================ -->
+  <footer class="site-footer" id="footer">
+    <div class="footer__inner">
+
+      <!-- Email CTA -->
+      <div class="footer__cta">
+        <h2 class="footer__cta-heading">Join the journey. Be the first to know.</h2>
+
+        <form
+          class="email-form email-form--inverted"
+          id="footer-form"
+          action="#"
+          method="post"
+          novalidate
+          aria-label="Subscribe to updates"
+        >
+          <label class="sr-only" for="footer-email">Email address</label>
+          <input
+            class="email-form__input"
+            type="email"
+            id="footer-email"
+            name="email"
+            placeholder="Enter your email"
+            required
+            autocomplete="email"
+          >
+          <button class="email-form__button" type="submit">Subscribe</button>
+        </form>
+        <p class="email-form__success" id="footer-form-success" aria-live="polite">
+          You're on the list. We'll be in touch.
+        </p>
+      </div>
+
+      <!-- Bottom row: brand block + social links -->
+      <div class="footer__bottom">
+
+        <div class="footer__brand-block">
+          <span class="footer__brand">TRAVRO</span>
+          <span class="footer__brand-tagline">A Travel Trail Goods Inc. Brand</span>
+          <span class="footer__brand-tagline">Based in California. Crafted with 25 years of expertise.</span>
+        </div>
+
+        <nav class="footer__social" aria-label="Social media links">
+          <a
+            href="https://instagram.com/travro"
+            class="footer__social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Instagram</a>
+          <a
+            href="https://tiktok.com/@travro"
+            class="footer__social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >TikTok</a>
+        </nav>
+
+      </div>
+
+      <!-- Legal -->
+      <div class="footer__legal">
+        <p class="footer__copyright">© 2026 Travel Trail Goods Inc. All rights reserved.</p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>

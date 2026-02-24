@@ -400,7 +400,7 @@ body::after {
 .hero-heading {
   font-family: var(--font-family-display);
   font-size: clamp(4rem, 9.5vw, 9.5rem);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.025em;
   color: #F5F2EE;
@@ -1086,7 +1086,7 @@ body::after {
 .footer-cta-heading {
   font-family: var(--font-family-display);
   font-size: clamp(3.5rem, 8.5vw, 8rem);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.015em;
   line-height: 1.00;
   color: var(--color-background);

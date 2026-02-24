@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============================================================
+       PRIMARY META
+       ============================================================ -->
+  <title>Our Story — TRAVRO | 25 Years of Luggage Engineering</title>
+  <meta name="description" content="TRAVRO started with a factory floor. For 25 years, a factory in Jiangxi, China built expertise for the world's biggest luggage brands. Now, they built their own. Design-forward luggage at an honest price.">
+  <link rel="canonical" href="https://travro.com/about">
+
+  <!-- ============================================================
+       OPEN GRAPH + TWITTER
+       ============================================================ -->
+  <meta property="og:title" content="Our Story — TRAVRO">
+  <meta property="og:description" content="We didn't start with a brand. We started with a factory floor. 25 years of engineering, now under its own name.">
+  <meta property="og:image" content="/images/og-image.jpg">
+  <meta property="og:url" content="https://travro.com/about">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- ============================================================
+       FAVICON
+       ============================================================ -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <!-- ============================================================
+       GOOGLE FONTS — Inter 400, 500, 600
+       ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- ============================================================
+       STYLES
+       ============================================================ -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Visually-hidden utility — for accessible form labels -->
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+
+  <!-- ============================================================
+       STRUCTURED DATA — WebPage schema
+       ============================================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Our Story — TRAVRO",
+    "url": "https://travro.com/about",
+    "description": "TRAVRO is luggage built by the manufacturer. 25 years of engineering expertise, now under its own name.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "TRAVRO",
+      "url": "https://travro.com"
+    }
+  }
+  </script>
+
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION HEADER
+       Fixed. Transparent over hero → solid on scroll (JS adds .is-scrolled).
+       ============================================================ -->
+  <header class="site-header" id="site-header">
+    <nav class="nav" aria-label="Main navigation">
+
+      <a href="index.html" class="nav__logo">
+        <img src="images/logo.png" alt="TRAVRO" class="nav__logo-img" width="482" height="144">
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="about.html"    class="nav__link">Our Story</a></li>
+        <li><a href="index.html#philosophy" class="nav__link">Design</a></li>
+        <li><a href="index.html#products"   class="nav__link">Products</a></li>
+        <li><a href="index.html#founder"    class="nav__link">About</a></li>
+      </ul>
+
+      <!-- Hamburger — visible on mobile only -->
+      <button
+        class="nav__toggle"
+        id="nav-toggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+    </nav>
+  </header>
+
+  <!-- Mobile navigation drawer (JS toggles .is-open) -->
+  <nav class="nav__mobile" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="about.html"    class="nav__mobile-link">Our Story</a>
+    <a href="index.html#philosophy" class="nav__mobile-link">Design</a>
+    <a href="index.html#products"   class="nav__mobile-link">Products</a>
+    <a href="index.html#founder"    class="nav__mobile-link">About</a>
+  </nav>
+
+
+  <main>
+
+    <!-- ============================================================
+         PAGE HERO — typographic, dark background
+         ============================================================ -->
+    <section class="page-hero" aria-labelledby="page-hero-heading">
+      <div class="page-hero__inner">
+        <h1 class="page-hero__heading" id="page-hero-heading">We didn't start with a brand.</h1>
+        <p class="page-hero__sub">We started with a factory floor.</p>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         BRAND MANIFESTO — verbatim from v2.2 Section 10
+         ============================================================ -->
+    <section aria-labelledby="manifesto-heading">
+      <div class="story-section">
+
+        <span class="story-section__label">Brand Manifesto</span>
+
+        <p>For twenty-five years, we made luggage for the brands you know. We learned what breaks first and what never breaks. We learned that a good wheel can save a trip and a bad zipper can ruin one. We learned that the gap between a $50 suitcase and a $500 suitcase isn't always $450 worth of engineering.</p>
+
+        <p>So we decided to skip the markup.</p>
+
+        <p>TRAVRO is luggage by the people who actually make luggage. Designed alongside the people who know how a polycarbonate shell flexes under pressure, how a telescoping handle should lock, and how many times a Hinomoto wheel can spin before it gives up (answer: it doesn't).</p>
+
+        <p>We believe good design should be accessible. We believe engineering should be transparent. We believe the carry-on you take to Tokyo and the one you take to your parents' house for Thanksgiving should both make you feel like you have your life together.</p>
+
+        <blockquote class="pull-quote">Travel in your own light. TRAVRO.</blockquote>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         ORIGIN STORY — verbatim from v2.2 Module 1 (English backer-facing)
+         ============================================================ -->
+    <section aria-labelledby="origin-heading">
+      <div class="story-section">
+
+        <span class="story-section__label">How It Started</span>
+        <h2 class="story-section__heading" id="origin-heading">The factory that finally built its own brand.</h2>
+
+        <p>For 25 years, a factory in Jiangxi, China has been the silent force behind luggage brands you already know. They didn't build a brand. They built expertise — one hinge, one wheel, one zipper at a time.</p>
+
+        <p>TRAVRO is what happens when that expertise finally gets its own name.</p>
+
+        <blockquote class="pull-quote">We're not a brand that outsources manufacturing. We are the manufacturer.</blockquote>
+
+        <p>That's why we can offer Hinomoto wheels, YKK zippers, and TSA-approved locks at a price point that doesn't require a coupon code to feel fair.</p>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         DESIGN PHILOSOPHY — verbatim from v2.2 Module 2 (full prose, vertical list)
+         ============================================================ -->
+    <section aria-labelledby="philosophy-about-heading">
+      <div class="story-section">
+
+        <span class="story-section__label">Design Philosophy</span>
+        <h2 class="story-section__heading" id="philosophy-about-heading">Three rules. No exceptions.</h2>
+
+        <p>Every TRAVRO product follows three rules:</p>
+
+        <ul class="philosophy-list" role="list">
+
+          <li class="philosophy-list__item">
+            <h3 class="philosophy-list__title">One-tone system.</h3>
+            <p class="philosophy-list__text">Shell, handle, wheels, zipper — all the same color. No visual noise. This isn't a design choice; it's a design discipline.</p>
+          </li>
+
+          <li class="philosophy-list__item">
+            <h3 class="philosophy-list__title">Engineering-grade components.</h3>
+            <p class="philosophy-list__text">Hinomoto wheels (Japan), YKK zippers, TSA-approved combination locks. These are the same component specifications found in luggage that retails for twice our price.</p>
+          </li>
+
+          <li class="philosophy-list__item">
+            <h3 class="philosophy-list__title">Quiet confidence.</h3>
+            <p class="philosophy-list__text">We don't make the loudest suitcase at the carousel. We make the one you trust to show up intact after 50 flights.</p>
+          </li>
+
+        </ul>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         FOUNDER — DTC "Our Story" + PR bio
+         Source: Founder Narrative v2.0, Modules 3 + 5
+         ============================================================ -->
+    <section aria-labelledby="founder-about-heading">
+      <div class="story-section">
+
+        <span class="story-section__label">The Founder</span>
+        <h2 class="story-section__heading" id="founder-about-heading">Built by someone who knows both sides.</h2>
+
+        <p>TRAVRO started with a gap that most people never see.</p>
+
+        <p>On one side: a factory in Jiangxi, China, with 25 years of engineering mastery — the kind of place that makes luggage for brands you already own, then watches someone else's logo go on the product.</p>
+
+        <p>On the other side: American travelers paying $300 for carry-ons built with the exact same components.</p>
+
+        <p>Will Zang saw both sides. He'd spent a decade at Maersk — the world's largest shipping company — building markets across three continents. He studied at Yale. He understood manufacturing from the inside. He understood what American consumers actually value. And he kept coming back to the same question: why does great luggage engineering always hide behind someone else's name?</p>
+
+        <p>TRAVRO is the answer. Not a brand that found a factory. A factory that finally built its own brand — with a team that knows both worlds well enough to bridge them.</p>
+
+        <blockquote class="pull-quote">Not a brand that found a factory. A factory that finally built its own brand.</blockquote>
+
+        <p>Will Zang is the co-founder of TRAVRO, a design-forward luggage brand built in partnership with a factory that spent 25 years making luggage for the world's biggest brands. Before TRAVRO, Will spent a decade at Maersk — the world's largest shipping company — where he rose from entry-level to senior management in eight years, building markets across West and Central Africa and leading major corporate integration projects. He holds a Master of Advanced Management from Yale School of Management, where he was the first Chinese citizen admitted from the University of Ghana. He has lived and worked across China, Africa, and the United States. Based in California.</p>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER — Email CTA + social links + legal
+       ============================================================ -->
+  <footer class="site-footer" id="footer">
+    <div class="footer__inner">
+
+      <!-- Email CTA -->
+      <div class="footer__cta">
+        <h2 class="footer__cta-heading">Join the journey. Be the first to know.</h2>
+
+        <form
+          class="email-form email-form--inverted"
+          id="footer-form"
+          action="#"
+          method="post"
+          novalidate
+          aria-label="Subscribe to updates"
+        >
+          <label class="sr-only" for="footer-email">Email address</label>
+          <input
+            class="email-form__input"
+            type="email"
+            id="footer-email"
+            name="email"
+            placeholder="Enter your email"
+            required
+            autocomplete="email"
+          >
+          <button class="email-form__button" type="submit">Subscribe</button>
+        </form>
+        <p class="email-form__success" id="footer-form-success" aria-live="polite">
+          You're on the list. We'll be in touch.
+        </p>
+      </div>
+
+      <!-- Bottom row: brand block + social links -->
+      <div class="footer__bottom">
+
+        <div class="footer__brand-block">
+          <span class="footer__brand">TRAVRO</span>
+          <span class="footer__brand-tagline">A Travel Trail Goods Inc. Brand</span>
+          <span class="footer__brand-tagline">Based in California. Crafted with 25 years of expertise.</span>
+        </div>
+
+        <nav class="footer__social" aria-label="Social media links">
+          <a
+            href="https://instagram.com/travro"
+            class="footer__social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Instagram</a>
+          <a
+            href="https://tiktok.com/@travro"
+            class="footer__social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >TikTok</a>
+        </nav>
+
+      </div>
+
+      <!-- Legal -->
+      <div class="footer__legal">
+        <p class="footer__copyright">© 2026 Travel Trail Goods Inc. All rights reserved.</p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>

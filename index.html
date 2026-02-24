@@ -8,7 +8,7 @@
        PRIMARY META
        ============================================================ -->
   <title>TRAVRO — Design-Forward Luggage | 25 Years of Engineering | Honest Pricing</title>
-  <meta name="description" content="TRAVRO is luggage built by the manufacturer. 25 years of expertise, Hinomoto wheels, YKK zippers, design-forward aesthetics — at a price that makes sense. Coming to Kickstarter 2026.">
+  <meta name="description" content="TRAVRO is luggage built by the manufacturer. 25 years of expertise, Hinomoto wheels, YKK zippers, and TSA-approved locks at a price that makes sense. Coming to Kickstarter 2026.">
   <link rel="canonical" href="https://travro.com/">
 
   <!-- ============================================================
@@ -87,10 +87,10 @@
       </a>
 
       <ul class="nav__links" role="list">
-        <li><a href="#story"      class="nav__link">Our Story</a></li>
-        <li><a href="#philosophy" class="nav__link">Design</a></li>
-        <li><a href="#products"   class="nav__link">Products</a></li>
-        <li><a href="#founder"    class="nav__link">About</a></li>
+        <li><a href="about.html"   class="nav__link">Our Story</a></li>
+        <li><a href="#philosophy"  class="nav__link">Design</a></li>
+        <li><a href="#products"    class="nav__link">Products</a></li>
+        <li><a href="#founder"     class="nav__link">About</a></li>
       </ul>
 
       <!-- Hamburger — visible on mobile only -->
@@ -111,10 +111,10 @@
 
   <!-- Mobile navigation drawer (JS toggles .is-open) -->
   <nav class="nav__mobile" id="mobile-nav" aria-label="Mobile navigation">
-    <a href="#story"      class="nav__mobile-link">Our Story</a>
-    <a href="#philosophy" class="nav__mobile-link">Design</a>
-    <a href="#products"   class="nav__mobile-link">Products</a>
-    <a href="#founder"    class="nav__mobile-link">About</a>
+    <a href="about.html"   class="nav__mobile-link">Our Story</a>
+    <a href="#philosophy"  class="nav__mobile-link">Design</a>
+    <a href="#products"    class="nav__mobile-link">Products</a>
+    <a href="#founder"     class="nav__mobile-link">About</a>
   </nav>
 
 
@@ -122,7 +122,7 @@
 
     <!-- ============================================================
          SECTION 1 — HERO
-         Layout: 2-column grid. Content left, product image right.
+         Full-viewport. Image column bleeds to right edge of viewport.
          ============================================================ -->
     <section class="hero" id="hero" aria-labelledby="hero-tagline">
       <div class="hero__grid">
@@ -131,6 +131,8 @@
         <div class="hero__content">
 
           <span class="hero__wordmark" aria-hidden="true">TRAVRO</span>
+
+          <p class="hero__kicker">25 years behind the world's biggest luggage brands. Now, in front of them.</p>
 
           <h1 class="hero__tagline" id="hero-tagline">Travel in your own light.</h1>
 
@@ -164,11 +166,11 @@
 
         </div>
 
-        <!-- Right column: hero product image -->
+        <!-- Right column: studio product image — bleeds to viewport edge -->
         <div class="hero__image">
           <img
-            src="images/k35-hero.jpg"
-            alt="K35 carry-on luggage hero shot"
+            src="images/k35-studio.jpg"
+            alt="K35 carry-on — three-piece family in black with yellow frame and wheels"
             class="hero__img"
             width="1600"
             height="1067"
@@ -181,8 +183,38 @@
 
 
     <!-- ============================================================
+         TRUST BAR — 4 key specs on charcoal background
+         ============================================================ -->
+    <section class="trust-bar" aria-label="Key product specifications">
+      <div class="trust-bar__inner">
+
+        <div class="trust-bar__item">
+          <span class="trust-bar__label">Manufacturing</span>
+          <span class="trust-bar__value">25 Years</span>
+        </div>
+
+        <div class="trust-bar__item">
+          <span class="trust-bar__label">Wheels</span>
+          <span class="trust-bar__value">Hinomoto (Japan)</span>
+        </div>
+
+        <div class="trust-bar__item">
+          <span class="trust-bar__label">Zippers</span>
+          <span class="trust-bar__value">YKK</span>
+        </div>
+
+        <div class="trust-bar__item">
+          <span class="trust-bar__label">Launch Price</span>
+          <span class="trust-bar__value">From $99 on Kickstarter</span>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
          SECTION 2 — OUR STORY
-         Layout: centered text block, max-width 760px.
+         Centered text block, max-width 760px.
          ============================================================ -->
     <section class="story" id="story" aria-labelledby="story-heading">
       <div class="story__inner">
@@ -202,8 +234,19 @@
 
 
     <!-- ============================================================
+         EDITORIAL BANNER — full-width typographic statement
+         ============================================================ -->
+    <section class="editorial-banner" aria-label="Brand statement">
+      <div class="editorial-banner__inner">
+        <h2 class="editorial-banner__heading">The premium luggage brand that doesn't charge a premium.</h2>
+        <p class="editorial-banner__sub">Engineered by decades. Designed for yours.</p>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
          SECTION 3 — DESIGN PHILOSOPHY
-         Layout: 3-column grid on desktop, stacked on mobile.
+         3-column grid on desktop, stacked on mobile.
          ============================================================ -->
     <section class="philosophy" id="philosophy" aria-labelledby="philosophy-heading">
       <div class="philosophy__inner">
@@ -235,19 +278,34 @@
 
     <!-- ============================================================
          SECTION 4 — PRODUCT PREVIEW
-         Layout: K35 hero (2-column) + 3-item Coming Soon grid.
+         K35 cinematic → K35 fold demos + specs → Materials → Coming Soon
          ============================================================ -->
     <section class="products" id="products" aria-labelledby="k35-heading">
       <div class="products__inner">
 
-        <!-- K35 — hero product -->
+        <!-- K35 Moment 1: Cinematic full-width with text overlay -->
+        <div class="product-story__cinematic">
+          <img
+            src="images/k35-hero.jpg"
+            alt="K35 carry-on luggage in a home living space"
+            class="product-story__cinematic-img"
+            width="1600"
+            height="762"
+            loading="lazy"
+          >
+          <div class="product-story__caption">
+            <p class="product-story__caption-text">Your suitcase takes up more space in your apartment than your coffee table.</p>
+          </div>
+        </div>
+
+        <!-- K35 Moment 2: Fold demo + copy + spec strip -->
         <div class="product-hero">
 
-          <!-- Left: image stack (expanded + folded views) -->
+          <!-- Left: studio images — expanded interior + folded -->
           <div class="product-hero__images">
             <img
               src="images/k35-expanded.jpg"
-              alt="K35 carry-on, expanded to full size"
+              alt="K35 carry-on, open interior view showing full packing capacity"
               class="product-hero__img"
               width="1200"
               height="800"
@@ -255,7 +313,7 @@
             >
             <img
               src="images/k35-folded.jpg"
-              alt="K35 carry-on, folded to half size"
+              alt="K35 carry-on, folded to half its size for compact storage"
               class="product-hero__img"
               width="1200"
               height="800"
@@ -263,15 +321,73 @@
             >
           </div>
 
-          <!-- Right: product copy -->
+          <!-- Right: product copy + spec strip + price -->
           <div class="product-hero__content">
             <span class="product-hero__label">Hero Product</span>
             <h2 class="product-hero__name" id="k35-heading">K35 — The Carry-On That Folds in Half</h2>
             <p class="product-hero__subtitle">Big on travel, small on storage.</p>
-            <p class="product-hero__description">Your suitcase takes up more space in your apartment than your coffee table. And you use your coffee table every day. The K35 folds to half its size when you're home. Opens to a full-size carry-on in 10 seconds.</p>
+            <p class="product-hero__description"><strong>Here's the problem nobody talks about:</strong> Your suitcase takes up more space in your apartment than your coffee table. And you use your coffee table every day. The K35 folds to half its size when you're home. Opens to a full-size carry-on in 10 seconds.</p>
+
+            <!-- Spec strip — 3 columns -->
+            <div class="product-specs">
+              <div class="product-specs__item">
+                <span class="product-specs__label">Folds to half size</span>
+                <p class="product-specs__text">Slides under your bed. Into a closet. Behind a door.</p>
+              </div>
+              <div class="product-specs__item">
+                <span class="product-specs__label">Opens in 10 seconds</span>
+                <p class="product-specs__text">No straps. No setup. Just go.</p>
+              </div>
+              <div class="product-specs__item">
+                <span class="product-specs__label">Full carry-on</span>
+                <p class="product-specs__text">TSA-approved dimensions.</p>
+              </div>
+            </div>
+
             <span class="product-hero__price">Starting from $99 on Kickstarter</span>
           </div>
 
+        </div>
+
+        <!-- Materials Strip — engineering close-ups -->
+        <div class="materials">
+          <div class="materials__inner">
+            <h3 class="materials__heading">Engineered to outlast the miles.</h3>
+            <div class="materials__grid">
+
+              <div class="materials__item">
+                <img
+                  src="images/wheels-detail.jpg"
+                  alt="Hinomoto spinner wheel close-up — golden Japanese-engineered hardware"
+                  class="materials__img"
+                  width="900"
+                  height="675"
+                  loading="lazy"
+                >
+                <span class="materials__name">Hinomoto Wheels</span>
+                <span class="materials__spec">Japanese-engineered. 108,000 km rated.</span>
+              </div>
+
+              <div class="materials__item">
+                <img
+                  src="images/lock-detail.jpg"
+                  alt="TSA-approved combination lock and handle detail"
+                  class="materials__img"
+                  width="900"
+                  height="675"
+                  loading="lazy"
+                >
+                <span class="materials__name">TSA-Approved Lock</span>
+                <span class="materials__spec">Built in. Not bolted on.</span>
+              </div>
+
+              <div class="materials__item">
+                <span class="materials__name">YKK Zippers</span>
+                <span class="materials__spec">The same zipper trusted by every major brand.</span>
+              </div>
+
+            </div>
+          </div>
         </div>
 
         <!-- Coming Soon — 3-item grid -->
@@ -282,7 +398,7 @@
 
             <article class="coming-soon__item">
               <img
-                src="images/k07.jpg"
+                src="images/k07-white.jpg"
                 alt="K07 Mobile Office luggage"
                 class="coming-soon__img"
                 width="900"
@@ -296,7 +412,7 @@
 
             <article class="coming-soon__item">
               <img
-                src="images/lk001.jpg"
+                src="images/lk001-white.jpg"
                 alt="LK001 Aluminum Frame luggage"
                 class="coming-soon__img"
                 width="900"
@@ -304,7 +420,7 @@
                 loading="lazy"
               >
               <h4 class="coming-soon__name">LK001 Aluminum Frame</h4>
-              <p class="coming-soon__tagline">25 years in the making. Our flagship.</p>
+              <p class="coming-soon__tagline">25 years of engineering, expressed without compromise. Our flagship.</p>
               <span class="coming-soon__badge">Coming Soon</span>
             </article>
 
@@ -318,7 +434,7 @@
                 loading="lazy"
               >
               <h4 class="coming-soon__name">K34 Artist Canvas</h4>
-              <p class="coming-soon__tagline">Your luggage is a canvas. Limited-edition UV art surface.</p>
+              <p class="coming-soon__tagline">We asked emerging artists to treat our hardshell as their canvas. UV-fused. Limited edition.</p>
               <span class="coming-soon__badge">Coming Soon</span>
             </article>
 
@@ -331,7 +447,7 @@
 
     <!-- ============================================================
          SECTION 5 — ABOUT THE FOUNDER
-         Layout: centered text block, max-width 760px.
+         Centered text block, max-width 760px.
          ============================================================ -->
     <section class="founder" id="founder" aria-labelledby="founder-heading">
       <div class="founder__inner">
@@ -343,6 +459,8 @@
           <p>Will Zang saw both sides. A decade at Maersk — the world's largest shipping company — building markets across three continents. Yale School of Management. And a simple question that wouldn't go away: why does great luggage engineering always hide behind someone else's name?</p>
           <p>TRAVRO is the answer. Not a brand that found a factory. A factory that finally built its own brand.</p>
         </div>
+
+        <a href="about.html" class="text-link">Read the full story →</a>
 
       </div>
     </section>

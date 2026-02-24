@@ -1,23 +1,28 @@
 /*!
  * TRAVRO — main.js
- * Phase 3: Minimal vanilla JS. No libraries. No build step.
+ * Minimal vanilla JS. No libraries. No build step.
  *
  * Sections:
  *   1. Header scroll behaviour
  *   2. Mobile nav toggle
  *   3. Smooth scroll
- *   4. Email form handling
+ *   4. Email form handling (Formspree POST)
  */
 
 (function () {
   'use strict';
+
+  // ============================================================
+  // Formspree endpoint — swap this ID once you create a free
+  // account at formspree.io and connect the travro.com form.
+  // ============================================================
+  var FORMSPREE_ID = 'FORM_ID_HERE';
 
 
   /* ============================================================
      1. HEADER SCROLL BEHAVIOUR
      Adds .is-scrolled to .site-header after 50 px — CSS handles
      the transition to a solid background + border.
-     Note: CSS class is "is-scrolled" (matches style.css).
      ============================================================ */
 
   var header = document.getElementById('site-header');
@@ -31,10 +36,7 @@
     }
   }
 
-  // Passive listener — never blocks rendering
   window.addEventListener('scroll', onScroll, { passive: true });
-
-  // Run once on load in case the page opens mid-scroll (e.g. browser restore)
   onScroll();
 
 
@@ -74,12 +76,10 @@
       }
     });
 
-    // Close when any drawer link is tapped
     mobileNav.querySelectorAll('.nav__mobile-link').forEach(function (link) {
       link.addEventListener('click', closeMobileNav);
     });
 
-    // Close on Escape, return focus to toggle button
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
         closeMobileNav();
@@ -95,7 +95,6 @@
      Intercepts clicks on all internal anchor links (#…).
      Closes the mobile nav first, then scrolls.
      Respects prefers-reduced-motion — uses instant jump if set.
-     (CSS scroll-behavior: smooth handles keyboard / non-JS nav.)
      ============================================================ */
 
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -103,16 +102,12 @@
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       var href = link.getAttribute('href');
-
-      // Ignore bare "#" placeholders
       if (!href || href === '#') return;
 
       var target = document.querySelector(href);
       if (!target) return;
 
       e.preventDefault();
-
-      // Close mobile nav before scrolling (avoids layout shift)
       closeMobileNav();
 
       target.scrollIntoView({
@@ -123,15 +118,14 @@
 
 
   /* ============================================================
-     4. EMAIL FORM HANDLING
-     Prevents default submit, runs a lightweight format check,
-     then shows the success message and hides the form inputs.
-     No backend yet — Formspree endpoint to be wired in later
-     (replace the fake fetch below with a real POST).
+     4. EMAIL FORM HANDLING — Formspree POST
+     - Validates email format client-side first
+     - Shows loading state while fetch is in flight
+     - On 200: hides form, shows success message
+     - On network/server error: shows inline error, re-enables
      ============================================================ */
 
   function isValidEmail(email) {
-    // RFC-loose check: something @ something . something
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
@@ -141,36 +135,84 @@
 
     if (!form || !successMsg) return;
 
-    var emailInput = form.querySelector('input[type="email"]');
+    var emailInput  = form.querySelector('input[type="email"]');
+    var submitBtn   = form.querySelector('button[type="submit"]');
+    var originalBtnText = submitBtn ? submitBtn.textContent : 'Submit';
+
+    // Inline error element — inserted once, reused
+    var errorMsg = document.createElement('p');
+    errorMsg.className = 'email-form__error';
+    errorMsg.setAttribute('aria-live', 'polite');
+    errorMsg.style.display = 'none';
+    form.appendChild(errorMsg);
+
+    function showError(msg) {
+      errorMsg.textContent = msg;
+      errorMsg.style.display = 'block';
+    }
+
+    function clearError() {
+      errorMsg.style.display = 'none';
+      errorMsg.textContent = '';
+    }
+
+    function setLoading(loading) {
+      if (!submitBtn) return;
+      submitBtn.disabled = loading;
+      submitBtn.textContent = loading ? 'Sending\u2026' : originalBtnText;
+    }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      clearError();
 
       var email = emailInput ? emailInput.value.trim() : '';
 
-      // --- Validation ---
+      // Client-side validation
       if (!email || !isValidEmail(email)) {
         if (emailInput) {
-          // Highlight the field; CSS transition handles the colour change
           emailInput.focus();
           emailInput.style.borderColor = 'var(--color-accent)';
-          emailInput.addEventListener('input', function clearError() {
+          emailInput.addEventListener('input', function clearBorder() {
             emailInput.style.borderColor = '';
-            emailInput.removeEventListener('input', clearError);
+            emailInput.removeEventListener('input', clearBorder);
           }, { once: true });
         }
         return;
       }
 
-      // --- Success state ---
-      // Hide the form row, reveal the confirmation line.
-      // When Formspree (or similar) is connected, wrap this block
-      // in the fetch().then() success callback instead.
-      form.style.display = 'none';
-      successMsg.classList.add('is-visible');
+      // Build form data
+      var data = new FormData();
+      data.append('email', email);
 
-      // Reset so the form could be re-shown if needed
-      form.reset();
+      setLoading(true);
+
+      fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            // Success — hide form, show confirmation
+            form.style.display = 'none';
+            successMsg.classList.add('is-visible');
+            form.reset();
+          } else {
+            // Server returned an error
+            return response.json().then(function (body) {
+              var msg = (body && body.errors && body.errors[0] && body.errors[0].message)
+                ? body.errors[0].message
+                : 'Something went wrong. Please try again.';
+              showError(msg);
+              setLoading(false);
+            });
+          }
+        })
+        .catch(function () {
+          showError('Something went wrong. Please try again.');
+          setLoading(false);
+        });
     });
   }
 

@@ -10,11 +10,12 @@
   /* Brand Colors */
   --color-primary:        #2C2C2C;
   --color-background:     #F5F2EE;
-  --color-accent:         #8B8A6E;
+  --color-accent:         #C4956A;  /* warm copper — primary brand accent */
+  --color-sage:           #8B8A6E;  /* demoted: used sparingly for quiet moments */
   --color-text:           #2C2C2C;
-  --color-text-secondary: #7A7A7A;
+  --color-text-secondary: #6B6560;  /* warm taupe — harmonises with copper + stone */
   --color-surface:        #FFFFFF;
-  --color-border:         #D6D3CE;
+  --color-border:         #D4D0C8;  /* warmer greige */
   --color-placeholder:    #E0DDD8;
 
   /* Typography */
@@ -29,6 +30,7 @@
   --tracking-heading: 0.01em;
   --tracking-tight:   -0.025em;
   --tracking-tighter: -0.038em;
+  --tracking-display: -0.045em;  /* largest display headings */
 
   /* Spacing */
   --space-xs:  0.5rem;
@@ -179,6 +181,7 @@ body::after {
   padding: 0.875rem 1.625rem;
   border-radius: 9999px;
   border: 1px solid transparent;
+  background: rgba(26, 24, 22, 0.08); /* barely-there scrim: white logo always reads */
   transition:
     background var(--transition-pill),
     border-color var(--transition-pill),
@@ -204,14 +207,14 @@ body::after {
 }
 
 .nav-logo img {
-  height: 20px;
+  height: 32px;
   width: auto;
-  filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1); /* white logo on hero */
   transition: filter var(--transition-pill), opacity var(--transition-base);
 }
 
 .header.is-scrolled .nav-logo img {
-  filter: none;
+  filter: brightness(0); /* pure charcoal on light glassmorphic pill — reliable regardless of PNG tones */
 }
 
 .nav-logo:hover img {
@@ -388,10 +391,10 @@ body::after {
 }
 
 .hero-heading {
-  font-size: clamp(3.25rem, 7.5vw, 6.5rem);
-  font-weight: 600;
-  line-height: 0.97;
-  letter-spacing: var(--tracking-tighter);
+  font-size: clamp(4rem, 9.5vw, 9.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.042em;
   color: #F5F2EE;
   margin-bottom: 1.75rem;
 }
@@ -401,9 +404,9 @@ body::after {
 }
 
 .hero-sub {
-  font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
   font-weight: 400;
-  line-height: 1.72;
+  line-height: 1.75;
   color: rgba(245, 242, 238, 0.65);
   max-width: 500px;
   margin-bottom: 2.375rem;
@@ -414,7 +417,7 @@ body::after {
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(245, 242, 238, 0.38);
+  color: rgba(196, 149, 106, 0.75); /* warm copper — premium Kickstarter signal */
   margin-top: 1.375rem;
 }
 
@@ -565,7 +568,7 @@ body::after {
 }
 
 .story-heading {
-  font-size: clamp(1.875rem, 3vw, 2.75rem);
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
   font-weight: 500;
   letter-spacing: -0.012em;
   line-height: 1.22;
@@ -574,8 +577,8 @@ body::after {
 }
 
 .story-body p {
-  font-size: 1.0625rem;
-  line-height: 1.85;
+  font-size: 1.125rem;
+  line-height: 1.88;
   color: var(--color-text-secondary);
   margin-bottom: 1.375rem;
 }
@@ -659,10 +662,10 @@ body::after {
 }
 
 .manifesto-large {
-  font-size: clamp(3.75rem, 10vw, 10.5rem);
-  font-weight: 600;
-  line-height: 0.90;
-  letter-spacing: -0.04em;
+  font-size: clamp(5rem, 13vw, 15rem);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: var(--tracking-display);
   color: var(--color-background);
   margin: 0;
 }
@@ -704,7 +707,7 @@ body::after {
 }
 
 .rules-heading {
-  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  font-size: clamp(2.75rem, 5.5vw, 5rem);
   font-weight: 600;
   letter-spacing: -0.028em;
   line-height: 1.08;
@@ -720,7 +723,7 @@ body::after {
 
 .rule {
   padding: 2.5rem 3rem 0 0;
-  border-top: 2px solid var(--color-primary);
+  border-top: 2px solid var(--color-accent); /* copper accent line above each rule */
   margin-top: -1px;
 }
 
@@ -848,9 +851,9 @@ body::after {
 }
 
 .stack-card-title {
-  font-size: clamp(2rem, 3.5vw, 3.25rem);
-  font-weight: 600;
-  line-height: 1.07;
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.04;
   letter-spacing: -0.028em;
   color: var(--color-primary);
   margin-bottom: 1.625rem;
@@ -884,10 +887,10 @@ body::after {
 
 .spec-value {
   display: block;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.875rem;
+  font-weight: 700;
   letter-spacing: -0.025em;
-  color: var(--color-primary);
+  color: var(--color-accent); /* copper makes $99, 4", 10s feel premium */
   line-height: 1.15;
 }
 
@@ -904,11 +907,11 @@ body::after {
 .stack-card-badge {
   display: inline-block;
   padding: 0.5rem 1.125rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(196, 149, 106, 0.45); /* copper border — warm, not loud */
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.06em;
-  color: var(--color-text-secondary);
+  color: var(--color-accent); /* copper text */
   margin-top: 1.75rem;
   line-height: 1.5;
 }
@@ -932,7 +935,7 @@ body::after {
 }
 
 .section-heading {
-  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-size: clamp(2.75rem, 5.5vw, 5rem);
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.1;
@@ -941,7 +944,7 @@ body::after {
 }
 
 .section-sub {
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
 }
@@ -1022,7 +1025,7 @@ body::after {
 }
 
 .founder-heading {
-  font-size: clamp(2rem, 3.25vw, 3rem);
+  font-size: clamp(2.5rem, 4vw, 4rem);
   font-weight: 500;
   letter-spacing: -0.018em;
   line-height: 1.2;
@@ -1031,8 +1034,8 @@ body::after {
 }
 
 .founder-body p {
-  font-size: 1.0625rem;
-  line-height: 1.85;
+  font-size: 1.125rem;
+  line-height: 1.88;
   color: var(--color-text-secondary);
   margin-bottom: 1.375rem;
 }
@@ -1066,10 +1069,10 @@ body::after {
 }
 
 .footer-cta-heading {
-  font-size: clamp(2.75rem, 6.5vw, 5.5rem);
-  font-weight: 600;
+  font-size: clamp(3.5rem, 8.5vw, 8rem);
+  font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 1.05;
+  line-height: 1.00;
   color: var(--color-background);
   margin-bottom: 3rem;
 }

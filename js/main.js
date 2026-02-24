@@ -1,35 +1,51 @@
 /*!
  * TRAVRO — main.js
- * Minimal vanilla JS. No libraries. No build step.
+ * Editorial Cinematic Upgrade v3.0
+ * GSAP + ScrollTrigger (loaded via CDN in HTML)
  *
  * Sections:
- *   1. Header scroll behaviour
- *   2. Mobile nav toggle
- *   3. Smooth scroll
- *   4. Email form handling (Formspree POST)
+ *  1. Init & accessibility check
+ *  2. Header pill scroll behavior
+ *  3. Hero text stagger (GSAP)
+ *  4. Editorial strip reveal
+ *  5. Manifesto scroll reveal
+ *  6. Generic [data-reveal] elements
+ *  7. Sticky stacking product cards
+ *  8. Mobile navigation
+ *  9. Smooth scroll
+ * 10. Email forms (Formspree)
  */
 
 (function () {
   'use strict';
 
-  // ============================================================
-  // Formspree endpoint — swap this ID once you create a free
-  // account at formspree.io and connect the travro.com form.
-  // ============================================================
-  var FORMSPREE_ID = 'FORM_ID_HERE';
+  /* --------------------------------------------------
+     REPLACE THIS with your Formspree form ID
+     Get one free at https://formspree.io
+     -------------------------------------------------- */
+  var FORM_ID = 'YOUR_FORMSPREE_ID';
 
 
-  /* ============================================================
-     1. HEADER SCROLL BEHAVIOUR
-     Adds .is-scrolled to .site-header after 50 px — CSS handles
-     the transition to a solid background + border.
-     ============================================================ */
+  /* --------------------------------------------------
+     1. INIT & ACCESSIBILITY CHECK
+     -------------------------------------------------- */
+  var prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
 
-  var header = document.getElementById('site-header');
+  // Register GSAP ScrollTrigger plugin
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
+
+  /* --------------------------------------------------
+     2. HEADER PILL — SCROLL STATE
+     -------------------------------------------------- */
+  var header = document.getElementById('header');
 
   function onScroll() {
-    if (!header) return;
-    if (window.scrollY > 50) {
+    if (window.scrollY > 80) {
       header.classList.add('is-scrolled');
     } else {
       header.classList.remove('is-scrolled');
@@ -37,187 +53,337 @@
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  onScroll(); // run once on load
 
 
-  /* ============================================================
-     2. MOBILE NAV TOGGLE
-     Hamburger ↔ × animation via .is-active.
-     Drawer open/close via .is-open on #mobile-nav.
-     Manages aria-expanded + aria-label for screen readers.
-     Closes on: link click, Escape key.
-     ============================================================ */
+  /* --------------------------------------------------
+     3. HERO TEXT STAGGER
+     Fade + translateY for eyebrow, heading lines, sub, form, badge
+     -------------------------------------------------- */
+  if (!prefersReducedMotion && typeof gsap !== 'undefined') {
 
-  var navToggle = document.getElementById('nav-toggle');
-  var mobileNav = document.getElementById('mobile-nav');
+    // Set initial invisible state on all hero content children
+    gsap.set([
+      '.hero-eyebrow',
+      '.hero-line',
+      '.hero-sub',
+      '.email-form',
+      '.hero-badge'
+    ], { opacity: 0, y: 28 });
 
-  function openMobileNav() {
-    mobileNav.classList.add('is-open');
-    navToggle.classList.add('is-active');
-    navToggle.setAttribute('aria-expanded', 'true');
-    navToggle.setAttribute('aria-label', 'Close navigation menu');
+    var heroTl = gsap.timeline({ delay: 0.25 });
+
+    heroTl
+      .to('.hero-eyebrow', {
+        opacity: 1, y: 0,
+        duration: 0.75,
+        ease: 'power2.out'
+      })
+      .to('.hero-line', {
+        opacity: 1, y: 0,
+        duration: 0.85,
+        stagger: 0.13,
+        ease: 'power3.out'
+      }, '-=0.45')
+      .to('.hero-sub', {
+        opacity: 1, y: 0,
+        duration: 0.70,
+        ease: 'power2.out'
+      }, '-=0.45')
+      .to('.email-form', {
+        opacity: 1, y: 0,
+        duration: 0.65,
+        ease: 'power2.out'
+      }, '-=0.40')
+      .to('.hero-badge', {
+        opacity: 1, y: 0,
+        duration: 0.55,
+        ease: 'power2.out'
+      }, '-=0.35');
   }
 
-  function closeMobileNav() {
-    mobileNav.classList.remove('is-open');
+
+  /* --------------------------------------------------
+     4. EDITORIAL STRIP — STAGGER SLIDE IN
+     -------------------------------------------------- */
+  if (!prefersReducedMotion && typeof gsap !== 'undefined') {
+
+    gsap.set('.strip-item', { opacity: 0, x: 50 });
+
+    ScrollTrigger.create({
+      trigger: '.editorial-strip',
+      start: 'top 85%',
+      once: true,
+      onEnter: function () {
+        gsap.to('.strip-item', {
+          opacity: 1,
+          x: 0,
+          duration: 0.75,
+          stagger: 0.10,
+          ease: 'power2.out'
+        });
+      }
+    });
+  }
+
+
+  /* --------------------------------------------------
+     5. MANIFESTO — CINEMATIC SCROLL REVEAL
+     Kicker, large lines (split left/right), sub
+     -------------------------------------------------- */
+  if (!prefersReducedMotion && typeof gsap !== 'undefined') {
+
+    var manifesto = document.querySelector('.manifesto');
+
+    if (manifesto) {
+      gsap.set('.manifesto-kicker', { opacity: 0, y: 20 });
+      gsap.set('.manifesto-large:not(.manifesto-large--offset)', { opacity: 0, x: -60 });
+      gsap.set('.manifesto-large--offset', { opacity: 0, x: 60 });
+      gsap.set('.manifesto-divider', { opacity: 0, scaleX: 0, transformOrigin: 'left center' });
+      gsap.set('.manifesto-sub', { opacity: 0, y: 20 });
+
+      var manifestoTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: manifesto,
+          start: 'top 65%',
+          once: true
+        }
+      });
+
+      manifestoTl
+        .to('.manifesto-kicker', {
+          opacity: 1, y: 0,
+          duration: 0.6, ease: 'power2.out'
+        })
+        .to('.manifesto-large:not(.manifesto-large--offset)', {
+          opacity: 1, x: 0,
+          duration: 1.0, ease: 'power3.out'
+        }, '-=0.2')
+        .to('.manifesto-large--offset', {
+          opacity: 0.38, x: 0,
+          duration: 1.0, ease: 'power3.out'
+        }, '-=0.8')
+        .to('.manifesto-divider', {
+          opacity: 1, scaleX: 1,
+          duration: 0.8, ease: 'power2.inOut'
+        }, '-=0.4')
+        .to('.manifesto-sub', {
+          opacity: 1, y: 0,
+          duration: 0.7, ease: 'power2.out'
+        }, '-=0.3');
+    }
+  }
+
+
+  /* --------------------------------------------------
+     6. GENERIC [data-reveal] SCROLL REVEALS
+     Fade + translateY for any element with data-reveal attr
+     -------------------------------------------------- */
+  if (!prefersReducedMotion && typeof gsap !== 'undefined') {
+
+    var revealEls = document.querySelectorAll('[data-reveal]');
+
+    revealEls.forEach(function (el) {
+      gsap.set(el, { opacity: 0, y: 32 });
+
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 84%',
+        once: true,
+        onEnter: function () {
+          gsap.to(el, {
+            opacity: 1,
+            y: 0,
+            duration: 0.85,
+            ease: 'power2.out'
+          });
+        }
+      });
+    });
+  }
+
+
+  /* --------------------------------------------------
+     7. STICKY STACKING PRODUCT CARDS
+     Each card pins at top; previous card scales+fades as next enters
+     -------------------------------------------------- */
+  if (!prefersReducedMotion && typeof gsap !== 'undefined' && window.innerWidth > 768) {
+
+    var stackCards = gsap.utils.toArray('.stack-card');
+
+    stackCards.forEach(function (card, i) {
+
+      // Pin each card at top of viewport
+      ScrollTrigger.create({
+        trigger: card,
+        start: 'top top',
+        pin: true,
+        // Only add pin spacing for last card (to prevent extra scroll)
+        pinSpacing: (i === stackCards.length - 1)
+      });
+
+      // When the NEXT card scrolls in, scale+fade the CURRENT one
+      if (i < stackCards.length - 1) {
+        var nextCard = stackCards[i + 1];
+
+        ScrollTrigger.create({
+          trigger: nextCard,
+          start: 'top bottom',
+          end: 'top top',
+          scrub: 0.6,
+          onUpdate: function (self) {
+            var p = self.progress;
+            gsap.set(card, {
+              scale:   1 - (p * 0.05),
+              opacity: 1 - (p * 0.38),
+              filter:  'blur(' + (p * 7) + 'px)'
+            });
+          }
+        });
+      }
+    });
+  }
+
+
+  /* --------------------------------------------------
+     8. MOBILE NAVIGATION
+     -------------------------------------------------- */
+  var navToggle   = document.getElementById('nav-toggle');
+  var mobileNav   = document.getElementById('mobile-nav');
+  var mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  function openNav() {
+    navToggle.classList.add('is-active');
+    mobileNav.classList.add('is-open');
+    mobileNav.setAttribute('aria-hidden', 'false');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.setAttribute('aria-label', 'Close navigation menu');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeNav() {
     navToggle.classList.remove('is-active');
+    mobileNav.classList.remove('is-open');
+    mobileNav.setAttribute('aria-hidden', 'true');
     navToggle.setAttribute('aria-expanded', 'false');
     navToggle.setAttribute('aria-label', 'Open navigation menu');
+    document.body.style.overflow = '';
   }
 
   if (navToggle && mobileNav) {
-
     navToggle.addEventListener('click', function () {
-      var isOpen = mobileNav.classList.contains('is-open');
-      if (isOpen) {
-        closeMobileNav();
+      if (mobileNav.classList.contains('is-open')) {
+        closeNav();
       } else {
-        openMobileNav();
+        openNav();
       }
     });
 
-    mobileNav.querySelectorAll('.nav__mobile-link').forEach(function (link) {
-      link.addEventListener('click', closeMobileNav);
+    mobileLinks.forEach(function (link) {
+      link.addEventListener('click', closeNav);
     });
 
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
-        closeMobileNav();
+        closeNav();
         navToggle.focus();
       }
     });
-
   }
 
 
-  /* ============================================================
-     3. SMOOTH SCROLL
-     Intercepts clicks on all internal anchor links (#…).
-     Closes the mobile nav first, then scrolls.
-     Respects prefers-reduced-motion — uses instant jump if set.
-     ============================================================ */
-
-  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-    link.addEventListener('click', function (e) {
-      var href = link.getAttribute('href');
-      if (!href || href === '#') return;
-
+  /* --------------------------------------------------
+     9. SMOOTH SCROLL FOR ANCHOR LINKS
+     -------------------------------------------------- */
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      var href = anchor.getAttribute('href');
+      if (href === '#') return;
       var target = document.querySelector(href);
       if (!target) return;
 
       e.preventDefault();
-      closeMobileNav();
+      closeNav();
 
       target.scrollIntoView({
-        behavior: reducedMotion ? 'auto' : 'smooth'
+        behavior: prefersReducedMotion ? 'auto' : 'smooth'
       });
     });
   });
 
 
-  /* ============================================================
-     4. EMAIL FORM HANDLING — Formspree POST
-     - Validates email format client-side first
-     - Shows loading state while fetch is in flight
-     - On 200: hides form, shows success message
-     - On network/server error: shows inline error, re-enables
-     ============================================================ */
+  /* --------------------------------------------------
+     10. EMAIL FORMS — FORMSPREE INTEGRATION
+     -------------------------------------------------- */
+  function setupForm(formId, successId) {
+    var form    = document.getElementById(formId);
+    var success = document.getElementById(successId);
+    if (!form || !success) return;
 
-  function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
-
-  function setupEmailForm(formId, successId) {
-    var form       = document.getElementById(formId);
-    var successMsg = document.getElementById(successId);
-
-    if (!form || !successMsg) return;
-
-    var emailInput  = form.querySelector('input[type="email"]');
-    var submitBtn   = form.querySelector('button[type="submit"]');
-    var originalBtnText = submitBtn ? submitBtn.textContent : 'Submit';
-
-    // Inline error element — inserted once, reused
-    var errorMsg = document.createElement('p');
-    errorMsg.className = 'email-form__error';
-    errorMsg.setAttribute('aria-live', 'polite');
-    errorMsg.style.display = 'none';
-    form.appendChild(errorMsg);
-
-    function showError(msg) {
-      errorMsg.textContent = msg;
-      errorMsg.style.display = 'block';
-    }
-
-    function clearError() {
-      errorMsg.style.display = 'none';
-      errorMsg.textContent = '';
-    }
-
-    function setLoading(loading) {
-      if (!submitBtn) return;
-      submitBtn.disabled = loading;
-      submitBtn.textContent = loading ? 'Sending\u2026' : originalBtnText;
-    }
+    var errorEl = null;
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      clearError();
 
-      var email = emailInput ? emailInput.value.trim() : '';
+      // Clear previous errors
+      if (errorEl) { errorEl.remove(); errorEl = null; }
+      var emailInput = form.querySelector('input[type="email"]');
+      emailInput.style.borderColor = '';
 
-      // Client-side validation
-      if (!email || !isValidEmail(email)) {
-        if (emailInput) {
-          emailInput.focus();
-          emailInput.style.borderColor = 'var(--color-accent)';
-          emailInput.addEventListener('input', function clearBorder() {
-            emailInput.style.borderColor = '';
-            emailInput.removeEventListener('input', clearBorder);
-          }, { once: true });
-        }
+      // Validate
+      if (!emailRegex.test(emailInput.value.trim())) {
+        errorEl = document.createElement('p');
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.style.cssText = 'font-size:0.75rem;color:rgba(245,242,238,0.75);margin-top:0.625rem;';
+        form.insertAdjacentElement('afterend', errorEl);
+        emailInput.style.borderColor = 'rgba(245, 242, 238, 0.55)';
+        emailInput.focus();
         return;
       }
 
-      // Build form data
-      var data = new FormData();
-      data.append('email', email);
+      // Loading state
+      var btn = form.querySelector('button[type="submit"]');
+      var originalText = btn.textContent;
+      btn.textContent = 'Sending\u2026';
+      btn.disabled = true;
 
-      setLoading(true);
+      // If no Formspree ID set, just show success (demo mode)
+      if (FORM_ID === 'YOUR_FORMSPREE_ID') {
+        setTimeout(function () {
+          form.style.display = 'none';
+          success.classList.add('is-visible');
+        }, 600);
+        return;
+      }
 
-      fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+      // Submit to Formspree
+      fetch('https://formspree.io/f/' + FORM_ID, {
         method: 'POST',
-        body: data,
+        body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       })
-        .then(function (response) {
-          if (response.ok) {
-            // Success — hide form, show confirmation
+        .then(function (res) {
+          if (res.ok) {
             form.style.display = 'none';
-            successMsg.classList.add('is-visible');
-            form.reset();
+            success.classList.add('is-visible');
           } else {
-            // Server returned an error
-            return response.json().then(function (body) {
-              var msg = (body && body.errors && body.errors[0] && body.errors[0].message)
-                ? body.errors[0].message
-                : 'Something went wrong. Please try again.';
-              showError(msg);
-              setLoading(false);
-            });
+            throw new Error('Response not OK');
           }
         })
         .catch(function () {
-          showError('Something went wrong. Please try again.');
-          setLoading(false);
+          if (errorEl) errorEl.remove();
+          errorEl = document.createElement('p');
+          errorEl.textContent = 'Something went wrong. Please try again.';
+          errorEl.style.cssText = 'font-size:0.75rem;color:rgba(245,242,238,0.75);margin-top:0.625rem;';
+          form.insertAdjacentElement('afterend', errorEl);
+          btn.textContent = originalText;
+          btn.disabled = false;
         });
     });
   }
 
-  setupEmailForm('hero-form',   'hero-form-success');
-  setupEmailForm('footer-form', 'footer-form-success');
+  setupForm('hero-form',   'hero-success');
+  setupForm('footer-form', 'footer-success');
 
-
-}());
+})();

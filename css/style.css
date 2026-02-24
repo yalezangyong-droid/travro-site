@@ -18,8 +18,8 @@
   --color-border:         #D4D0C8;  /* warmer greige */
   --color-placeholder:    #E0DDD8;
 
-  /* Typography */
-  --font-family:          'Inter', system-ui, -apple-system, sans-serif;
+  /* Typography — single typeface, total authority */
+  --font-family:          'Cormorant Garamond', Georgia, serif;
   --font-family-display:  'Cormorant Garamond', Georgia, serif;
   --font-weight-normal:   400;
   --font-weight-medium:   500;
@@ -442,7 +442,7 @@ body::after {
 }
 
 .hero-scroll-label {
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(245, 242, 238, 0.3);
@@ -537,7 +537,7 @@ body::after {
   bottom: 0; left: 0; right: 0;
   z-index: 2;
   padding: 1.5rem 1.25rem 1.125rem;
-  font-size: 0.67rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -909,7 +909,7 @@ body::after {
 
 .spec-label {
   display: block;
-  font-size: 0.67rem;
+  font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -1000,7 +1000,7 @@ body::after {
 
 .product-badge {
   display: inline-block;
-  font-size: 0.67rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -1160,7 +1160,7 @@ body::after {
 .footer-legal {
   max-width: var(--max-width);
   margin: 0 auto;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   color: rgba(245, 242, 238, 0.20);
   text-align: center;
   border-top: 1px solid rgba(245, 242, 238, 0.06);

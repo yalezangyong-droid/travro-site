@@ -1,10 +1,25 @@
 # TRAVRO Pre-Launch Website — Claude Code Project Charter v2.0
 
-**Date:** February 22, 2026  
-**Status:** Approved for execution  
-**Project Owner:** Will Zang, Co-founder, Travel Trail Goods Inc.  
-**Technical Executor:** Claude Code  
+**Date:** February 25, 2026
+**Status:** Active — v3 reflects production implementation as of Feb 25, 2026
+**Project Owner:** Will Zang, Co-founder, Travel Trail Goods Inc.
+**Technical Executor:** Claude Code
 **Target:** Deploy immediately using temporary URL; bind custom domain when ready
+
+---
+
+## Changelog
+
+### v3.0 — Feb 25, 2026
+- Typography updated: Inter → Cormorant Garamond (editorial serif, Google Fonts)
+- Accent color updated: sage #8B8A6E → warm copper #C4956A (ratified as permanent)
+- Text secondary updated: #7A7A7A → warm taupe #6B6560; border and placeholder tokens added
+- Page architecture expanded: 6 → 9 sections (Editorial Strip, Manifesto, Stack Section added)
+- All Section 4 copy updated to reflect live site (live copy ratified as authoritative source of truth)
+- SEO meta description, OG title, JSON-LD updated to match live HTML
+
+### v2.0 — Feb 22, 2026
+- Initial charter approved for execution
 
 ---
 
@@ -52,24 +67,31 @@
 
 ### 3.1 Color System
 
-| Role | Color Direction | CSS Variable | Hex Value |
-|------|----------------|--------------|-----------|
-| Brand Primary | Deep Charcoal / Warm Black (NOT pure black — carries warm undertone) | `--color-primary` | `#2C2C2C` |
-| Brand Background | Off-White / Stone (NOT pure white — carries stone/warm gray tint) | `--color-background` | `#F5F2EE` |
-| Brand Accent | Sage / Olive (temporary — final accent TBD by designer Lucas) | `--color-accent` | `#8B8A6E` |
-| Text Primary | Same as Brand Primary | `--color-text` | `#2C2C2C` |
-| Text Secondary | Mid-gray for supporting text | `--color-text-secondary` | `#7A7A7A` |
-| Surface White | Pure white — use sparingly for cards or contrast sections | `--color-surface` | `#FFFFFF` |
+| Role | CSS Variable | Hex | Notes |
+|------|-------------|-----|-------|
+| Brand Primary | `--color-primary` | `#2C2C2C` | Deep charcoal / warm black — NOT pure black |
+| Brand Background | `--color-background` | `#F5F2EE` | Off-white stone — NOT pure white |
+| Brand Accent | `--color-accent` | `#C4956A` | **Warm copper** — permanent (replaced sage in v3) |
+| Text Primary | `--color-text` | `#2C2C2C` | Same as primary |
+| Text Secondary | `--color-text-secondary` | `#6B6560` | **Warm taupe** — harmonizes with copper + stone background |
+| Surface White | `--color-surface` | `#FFFFFF` | Use sparingly for cards or contrast |
+| Border | `--color-border` | `#D4D0C8` | Warmer greige — for dividers and rule lines |
+| Placeholder | `--color-placeholder` | `#E0DDD8` | Dev placeholder backgrounds; replace with real images |
+| Deprecated | `--color-sage` | `#8B8A6E` | Reserved — do not use in new work |
 
 ### 3.2 Typography
 
 | Role | Specification |
 |------|--------------|
-| Font family | `Inter` from Google Fonts (both headings and body). Fallback: `system-ui, -apple-system, sans-serif` |
-| Headings | Weight: 500 (Medium) to 600 (Semi-Bold). Conveys reliability and engineering precision. |
-| Body text | Weight: 400 (Regular). Clean and readable. |
-| Brand name "TRAVRO" | Always uppercase. Letter-spacing: 0.15em - 0.2em. Weight: 600. |
-| Heading letter-spacing | Slightly wider than default (~0.02em). Reflects "white space" and "restraint" in brand tone. |
+| Font family | `Cormorant Garamond` from Google Fonts. Fallback: `Georgia, serif` |
+| Google Fonts URL weights | `ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400` |
+| Design rationale | Single typeface with total authority — editorial serif from nav wordmark to legal copy. Archetype: Aesop, Freight Display. |
+| Display headings | Weight 400 (Regular). Confident without being heavy at large scale (clamp 4rem–9.5rem). |
+| Ghost / background text | Weight 300 (Light). Intentionally hairline — used only for Manifesto overlay text at 15rem. |
+| UI labels, badges | Weight 500–600 with `letter-spacing: 0.09–0.13em`. All-caps tracking compensates for serif x-height at small sizes. |
+| Spec values ($99, 4″, 10s) | Weight 700. Bold copper figures need visual presence. |
+| Brand name "TRAVRO" | Weight 700. Letter-spacing: 0.18em. Always uppercase. |
+| Body text | Weight 400. Line-height: 1.7. |
 
 ### 3.3 Design Principles
 
@@ -81,7 +103,7 @@
 ### 3.4 Visual Prohibitions (DO NOT)
 - ❌ Travel-related icons (airplanes, globes, compasses, roads)
 - ❌ Decorative design elements or ornamental borders
-- ❌ Thin/light font weights (conveys "frivolous" not "quiet strength")
+- ❌ Light weights (300) on body text or UI labels — reserved exclusively for large-scale ghost/background typography
 - ❌ More than 3 colors on any single viewport
 - ❌ Generic stock photo aesthetics
 - ❌ Flashy animations, parallax scrolling, or particle effects
@@ -91,7 +113,7 @@
 
 ## 4. PAGE ARCHITECTURE
 
-Single-page long-scroll layout. Six sections. All content is in English.
+Single-page long-scroll layout. Nine sections. All content is in English.
 
 **Critical Pomelli requirement:** Every section must contain substantive English text (not just images). Pomelli extracts tone of voice, brand values, and messaging from text content. Image-heavy pages with little text produce weak Business DNA profiles.
 
@@ -107,10 +129,24 @@ Single-page long-scroll layout. Six sections. All content is in English.
 
 - **Brand name:** TRAVRO (large wordmark, uppercase, wide letter-spacing)
 - **Tagline:** Travel in your own light.
-- **Subtitle:** Design-forward luggage. 25 years of engineering. Honest pricing.
+- **Subtitle:** Design-forward luggage engineered by 25 years of manufacturing expertise. Not a brand with a factory. A factory with a brand.
 - **CTA:** Email input field with placeholder "Enter your email" + button "Join the Journey"
-- **Badge:** "Coming to Kickstarter 2026"
-- **Hero image:** K35 carry-on product photo (placeholder during development: use a centered gray rectangle with text "K35 Hero Image — 1200×800")
+- **Badge:** "Coming to Kickstarter · Q2 2026"
+- **Hero image:** K35 carry-on product photo
+
+---
+
+### Section 1b: EDITORIAL STRIP *(added v3)*
+
+**Purpose:** Visual brand statement between Hero and Our Story. No headline, no body copy — pure product imagery.
+
+**Layout:** Full-width horizontal strip of 4 product photos in fixed aspect ratio. Each image has a short uppercase figcaption label.
+
+**Content:**
+- Image 1: K35 carry-on — full profile shot
+- Image 2: K35 — folded to 4″ depth
+- Image 3: K35 — expanded carry-on, full volume
+- Image 4: K07 Mobile Office bag
 
 ---
 
@@ -126,11 +162,23 @@ Single-page long-scroll layout. Six sections. All content is in English.
 
 **Body:**
 
-For 25 years, a factory in Jiangxi, China has been the silent force behind luggage brands you already know. They didn't build a brand. They built expertise — one hinge, one wheel, one zipper at a time.
+For 25 years, our manufacturing partners have built luggage for the world's most recognized names in travel—producing millions of units across Asia's most sophisticated supply chains. We've seen firsthand how the industry works: premium brands add their label, triple the price, and pass the cost to you.
 
-TRAVRO is what happens when that expertise finally gets its own name.
+TRAVRO was built to change that equation. Same factories. Same components. Same engineering precision. A fraction of the cost—because we're not paying for a legacy brand's overhead.
 
-We're not a brand that outsources manufacturing. We are the manufacturer. That's why we can offer Hinomoto wheels, YKK zippers, and TSA-approved locks at a price point that doesn't require a coupon code to feel fair.
+This is luggage made by people who know every rivet, every wheel mechanism, every zipper track. Not by marketers who discovered luggage was profitable.
+
+---
+
+### Section 2b: MANIFESTO *(added v3)*
+
+**Purpose:** Brand manifesto statement between Our Story and Design Philosophy. Pure typographic impact — no body copy.
+
+**Layout:** Full-bleed dark section (charcoal background). Two lines of large display text at 15rem, weight 300 (intentionally hairline at this scale). Second line offset right and italicized.
+
+**Content:**
+- Line 1: "The premium luggage brand"
+- Line 2 (offset, italic): "that doesn't charge a premium."
 
 ---
 
@@ -145,13 +193,33 @@ We're not a brand that outsources manufacturing. We are the manufacturer. That's
 **Heading:** Three rules. No exceptions.
 
 **Block 1 — One-tone system.**
-Shell, handle, wheels, zipper — all the same color. No visual noise. This isn't a design choice; it's a design discipline.
+Every component—body, zippers, handles, wheels—is designed in the same tonal family. No visual noise. No mismatched hardware. The product looks like one considered decision, not an assembly of parts.
 
 **Block 2 — Engineering-grade components.**
-Hinomoto wheels. YKK zippers. TSA-approved locks. The same components inside luggage that costs twice as much.
+We use Hinomoto wheels from Japan, YKK zippers, and TSA-approved combination locks. Not because they're premium talking points—because they're the components that actually work, across hundreds of thousands of kilometres.
 
 **Block 3 — Quiet confidence.**
-We don't make the loudest suitcase at the carousel. We make the one you trust to show up intact after 50 flights.
+No logo parade. No flashy hardware. No trend-chasing colorways. TRAVRO is designed to look exactly right for exactly as long as you own it. The kind of design that ages like architecture, not fashion.
+
+---
+
+### Section 3b: STACK SECTION *(added v3)*
+
+**Purpose:** Immersive product storytelling between Design Philosophy and Coming Soon grid. Expands the K35 narrative into three cinematic cards.
+
+**Layout:** Sticky-scroll — left panel holds a product image that pans as user scrolls; right panel shows stacked narrative cards. Spec strip at bottom: 4″ folded depth / 10s to open / $99 starting price.
+
+**Card 1 — K35 introduction:**
+Heading: K35 — The Carry-On That Folds in Half
+Body: Full carry-on volume when you need it. Folds to half its depth in 10 seconds when you don't. The only luggage that solves the storage problem as elegantly as it solves the travel problem.
+
+**Card 2 — Engineering:**
+Heading: Built for the distance, not the shelf.
+Body: Our proprietary mechanism collapses the shell to 4 inches without losing its shape. [Engineering components story: Hinomoto wheels, YKK zippers, TSA locks]
+
+**Card 3 — Design system:**
+Heading: One tone. Zero compromises.
+Body: [One-tone aesthetic story — how the design system extends to every component]
 
 ---
 
@@ -165,18 +233,17 @@ We don't make the loudest suitcase at the carousel. We make the one you trust to
 
 **K35 — Hero Product**
 - **Name:** K35 — The Carry-On That Folds in Half
-- **Subtitle:** Big on travel, small on storage.
-- **Description:** Your suitcase takes up more space in your apartment than your coffee table. And you use your coffee table every day. The K35 folds to half its size when you're home. Opens to a full-size carry-on in 10 seconds.
+- **Description:** Full carry-on volume when you need it. Folds to half its depth in 10 seconds when you don't. The only luggage that solves the storage problem as elegantly as it solves the travel problem.
 - **Price badge:** Starting from $99 on Kickstarter
-- **Images:** 2–3 photos (expanded view + folded view). Placeholder during dev: gray rectangles labeled "K35-expanded — 800×600" and "K35-folded — 800×600"
+- **Images:** K35 expanded and folded product photos
 
 **Coming Soon Grid (3 items):**
 
-| Product | One-liner | Placeholder label |
-|---------|-----------|-------------------|
-| K07 Mobile Office | Your office, anywhere. Front-open design fits your 16" MacBook. | "K07 — 600×400" |
-| LK001 Aluminum Frame | 25 years in the making. Our flagship. | "LK001 — 600×400" |
-| K34 Artist Canvas | Your luggage is a canvas. Limited-edition UV art surface. | "K34 — 600×400" |
+| Product | One-liner |
+|---------|-----------|
+| K07 Mobile Office | The bag that works as hard as you do. |
+| LK001 Aluminum Frame | Industrial precision. Lifetime warranty. |
+| K34 Artist Canvas | For when you pack like you live. |
 
 ---
 
@@ -192,11 +259,11 @@ We don't make the loudest suitcase at the carousel. We make the one you trust to
 
 **Body:**
 
-TRAVRO started with a gap that most people never see. On one side: a factory with 25 years of engineering mastery — the kind of place that makes luggage for brands you already own. On the other side: American travelers paying $300 for carry-ons built with the exact same components.
+Most luggage brands are built by marketers who found a manufacturer. TRAVRO is built by someone who grew up in the industry—who spent years on both sides of the factory floor and the business class cabin.
 
-Will Zang saw both sides. A decade at Maersk — the world's largest shipping company — building markets across three continents. Yale School of Management. And a simple question that wouldn't go away: why does great luggage engineering always hide behind someone else's name?
+After years in global logistics and supply chain at Maersk, then an MBA at Yale, our founder Will Zang kept asking the same question: why does everyone in the know buy their luggage from the factory direct, while everyone else pays five times the price for a label?
 
-TRAVRO is the answer. Not a brand that found a factory. A factory that finally built its own brand.
+TRAVRO is the answer. Not a brand that happens to make luggage. A manufacturing team that finally decided to talk directly to the people who carry it.
 
 ---
 
@@ -250,14 +317,14 @@ During development, use styled placeholder elements (not external placeholder se
 ### Meta Tags
 ```html
 <title>TRAVRO — Design-Forward Luggage | 25 Years of Engineering | Honest Pricing</title>
-<meta name="description" content="TRAVRO is luggage built by the manufacturer. 25 years of expertise, Hinomoto wheels, YKK zippers, design-forward aesthetics — at a price that makes sense. Coming to Kickstarter 2026.">
+<meta name="description" content="TRAVRO builds design-forward luggage using 25 years of manufacturing expertise. Same factory-grade components as premium brands. A fraction of the cost. Coming to Kickstarter Q2 2026.">
 ```
 
 ### Open Graph Tags
 ```html
-<meta property="og:title" content="TRAVRO — Travel in Your Own Light">
-<meta property="og:description" content="Design-forward luggage. 25 years of engineering. Honest pricing. Coming to Kickstarter 2026.">
-<meta property="og:image" content="/images/og-image.jpg">
+<meta property="og:title" content="TRAVRO — Design-Forward Luggage | 25 Years of Engineering">
+<meta property="og:description" content="TRAVRO builds design-forward luggage using 25 years of manufacturing expertise. Same factory-grade components as premium brands. A fraction of the cost. Coming to Kickstarter Q2 2026.">
+<meta property="og:image" content="https://travro.com/images/og-image.jpg">
 <meta property="og:url" content="https://travro.com">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -271,9 +338,9 @@ Include Organization schema:
   "@type": "Organization",
   "name": "TRAVRO",
   "url": "https://travro.com",
-  "logo": "https://travro.com/images/travro-logo.svg",
-  "description": "Design-forward luggage brand. 25 years of manufacturing expertise.",
-  "foundingDate": "2025",
+  "logo": "https://travro.com/images/logo.png",
+  "description": "TRAVRO builds design-forward luggage using 25 years of manufacturing expertise. Same factory-grade components as premium brands. A fraction of the cost.",
+  "foundingDate": "2026",
   "parentOrganization": {
     "@type": "Organization",
     "name": "Travel Trail Goods Inc."
@@ -357,7 +424,7 @@ Claude Code should produce:
 
 ```
 travro-site/
-├── index.html              # Single page with all 6 sections
+├── index.html              # Single page with all 9 sections
 ├── css/
 │   └── style.css           # All styles, using CSS custom properties
 ├── js/
@@ -377,7 +444,9 @@ travro-site/
 
 ## 11. COPY USAGE INSTRUCTIONS
 
-**All English copy in Section 4 of this charter is FINAL and APPROVED.** Claude Code should use this text verbatim. Do not rewrite, "optimize," paraphrase, or add marketing flourishes.
+**All English copy in Section 4 of this charter is FINAL and APPROVED.** Do not rewrite, "optimize," paraphrase, or add marketing flourishes.
+
+> **v3 note:** Section 4 copy was updated in v3 to reflect production implementation (live site as of Feb 25, 2026). The live HTML and this charter are now synchronized. Future copy edits must update both simultaneously to keep them in sync.
 
 These copy blocks were developed through multiple iterations of brand positioning work (documented in TRAVRO 品牌定位说明书 v2.2 and TRAVRO Founder Narrative v2.0). They reflect deliberate tone-of-voice decisions:
 - Confident but not arrogant
@@ -404,4 +473,4 @@ For any visual detail NOT specified in this charter (spacing values, hover effec
 
 ---
 
-*Charter v2.0 | Created: Feb 22, 2026 | For: TRAVRO Pre-launch Website Build via Claude Code*
+*Charter v3.0 | Created: Feb 22, 2026 | Updated: Feb 25, 2026 | For: TRAVRO Pre-launch Website Build via Claude Code*

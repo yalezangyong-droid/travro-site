@@ -1,6 +1,6 @@
 # TRAVRO — Pre-Launch Website
 
-Static pre-launch website for **TRAVRO** by Travel Trail Goods Inc. Built to satisfy four goals simultaneously: unlock Google Pomelli's Business DNA analysis (requires a live, bot-unblocked, text-rich URL), establish an SEO beachhead for the brand name, collect Kickstarter pre-launch email subscribers, and provide a professional URL for trade show and partner communications. The site is intentionally minimal — pure HTML + CSS + vanilla JS, no frameworks, no build step — so any developer can open a file and edit it.
+Static pre-launch website for **TRAVRO** by Travel Trail Goods Inc. Built to satisfy four goals simultaneously: unlock Google Pomelli's Business DNA analysis (requires a live, bot-unblocked, text-rich URL), establish an SEO beachhead for the brand name, collect Kickstarter pre-launch email subscribers, and provide a professional URL for trade show and partner communications. The site is intentionally minimal — pure HTML + CSS + vanilla JS, no frameworks, no build step — so any developer can open a file and edit it. Nine sections, Cormorant Garamond typography, copper accent system.
 
 ---
 
@@ -164,7 +164,7 @@ Alternatively, drop a Mailchimp embed form in place of the existing form markup.
 ```
 travro-site/
 │
-├── index.html          Single-page site. All 6 sections. All copy final and verbatim.
+├── index.html          Single-page site. All 9 sections. All copy final and verbatim.
 │
 ├── 404.html            Branded error page. Same CSS + fonts. No JS.
 │
@@ -190,7 +190,7 @@ travro-site/
 │                       HTML → no-cache (always fresh).
 │
 ├── docs/
-│   └── TRAVRO_Website_Project_Charter_v2.md   Source of truth for all copy + specs.
+│   └── TRAVRO_Website_Project_Charter_v2.md   Source of truth for all copy + specs (v3 as of Feb 25, 2026).
 │
 └── CLAUDE.md           Instructions for Claude Code (phased build workflow).
 ```
@@ -199,7 +199,11 @@ travro-site/
 
 ## Design Decisions
 
-All copy is final and sourced verbatim from the Project Charter (`docs/TRAVRO_Website_Project_Charter_v2.md` Section 4). Do not rewrite or paraphrase.
+All copy is final and sourced verbatim from the Project Charter (`docs/TRAVRO_Website_Project_Charter_v2.md` Section 4, v3). Do not rewrite or paraphrase.
+
+**Typography:** Cormorant Garamond — single typeface used at all scales from nav wordmark to legal copy. Display headings at weight 400; ghost/background text at weight 300 (Manifesto only); labels and badges at 500–600; spec values and wordmark at 700.
+
+**Colors:** Warm copper `#C4956A` as primary accent. Stone background `#F5F2EE`. Warm taupe `#6B6560` for secondary text. Full token reference in charter Section 3.1.
 
 For any visual change not covered by the charter, the guiding question is: **does it align with "Architectural Minimalism + Quiet Confidence"?** When in doubt, do less.
 

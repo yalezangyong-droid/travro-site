@@ -11,7 +11,7 @@
   --color-primary:        #2C2C2C;
   --color-background:     #F5F2EE;
   --color-accent:         #C4956A;  /* warm copper — primary brand accent */
-  --color-sage:           #8B8A6E;  /* demoted: used sparingly for quiet moments */
+  --color-sage:           #8B8A6E;  /* deprecated — do not use in new work; reserved per charter v3 */
   --color-text:           #2C2C2C;
   --color-text-secondary: #6B6560;  /* warm taupe — harmonises with copper + stone */
   --color-surface:        #FFFFFF;
@@ -30,8 +30,8 @@
   --tracking-caps:    0.10em;
   --tracking-heading: 0.01em;
   --tracking-tight:   -0.025em;
-  --tracking-tighter: -0.038em;
-  --tracking-display: -0.045em;  /* largest display headings */
+  --tracking-heading-md: -0.018em; /* rules-heading, stack-card-title */
+  --tracking-heading-sm: -0.012em; /* story-heading, founder-heading, collection headings */
 
   /* Spacing */
   --space-xs:  0.5rem;
@@ -45,7 +45,7 @@
   /* Layout */
   --max-width:       1280px;
   --max-width-text:  760px;
-  --max-width-narrow: 600px;
+  --max-width-narrow: 640px;
 
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -134,7 +134,31 @@ body::after {
 
 
 /* ---------------------------------------------------------
-   3. LAYOUT UTILITIES
+   3. FOCUS STATES — keyboard navigation
+   --------------------------------------------------------- */
+
+/* Remove browser default for mouse users; preserve for keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Copper focus ring for keyboard/assistive navigation */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Slightly more offset for pill/button shapes */
+.nav-toggle:focus-visible,
+.email-form button:focus-visible {
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+
+/* ---------------------------------------------------------
+   4. LAYOUT UTILITIES
    --------------------------------------------------------- */
 .container {
   max-width: var(--max-width);
@@ -149,6 +173,7 @@ body::after {
 
 .container--narrow {
   max-width: var(--max-width-narrow);
+  margin: 0 auto;
 }
 
 [data-reveal] {
@@ -250,7 +275,7 @@ body::after {
 }
 
 .nav-link:hover {
-  color: #ffffff;
+  color: var(--color-surface);
 }
 
 .header.is-scrolled .nav-link:hover {
@@ -402,8 +427,8 @@ body::after {
   font-size: clamp(4rem, 9.5vw, 9.5rem);
   font-weight: 400;
   line-height: 0.95;
-  letter-spacing: -0.025em;
-  color: #F5F2EE;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-background);
   margin-bottom: 1.75rem;
 }
 
@@ -425,7 +450,7 @@ body::after {
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(196, 149, 106, 0.75); /* warm copper — premium Kickstarter signal */
+  color: color-mix(in srgb, var(--color-accent) 75%, transparent); /* warm copper — premium Kickstarter signal */
   margin-top: 1.375rem;
 }
 
@@ -579,7 +604,7 @@ body::after {
   font-family: var(--font-family-display);
   font-size: clamp(2.25rem, 4vw, 3.75rem);
   font-weight: 400;
-  letter-spacing: -0.012em;
+  letter-spacing: var(--tracking-heading-sm);
   line-height: 1.22;
   color: var(--color-primary);
   margin-bottom: 2.5rem;
@@ -721,7 +746,7 @@ body::after {
   font-family: var(--font-family-display);
   font-size: clamp(2.75rem, 5.5vw, 5rem);
   font-weight: 500;
-  letter-spacing: -0.018em;
+  letter-spacing: var(--tracking-heading-md);
   line-height: 1.08;
   color: var(--color-primary);
   margin-bottom: clamp(3.5rem, 7vw, 5.5rem);
@@ -867,7 +892,7 @@ body::after {
   font-size: clamp(2.5rem, 4.5vw, 4.5rem);
   font-weight: 500;
   line-height: 1.04;
-  letter-spacing: -0.018em;
+  letter-spacing: var(--tracking-heading-md);
   color: var(--color-primary);
   margin-bottom: 1.625rem;
 }
@@ -902,7 +927,7 @@ body::after {
   display: block;
   font-size: 1.875rem;
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: var(--tracking-tight);
   color: var(--color-accent); /* copper makes $99, 4", 10s feel premium */
   line-height: 1.15;
 }
@@ -920,7 +945,7 @@ body::after {
 .stack-card-badge {
   display: inline-block;
   padding: 0.5rem 1.125rem;
-  border: 1px solid rgba(196, 149, 106, 0.45); /* copper border — warm, not loud */
+  border: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent); /* copper border — warm, not loud */
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -1042,7 +1067,7 @@ body::after {
   font-family: var(--font-family-display);
   font-size: clamp(2.5rem, 4vw, 4rem);
   font-weight: 400;
-  letter-spacing: -0.012em;
+  letter-spacing: var(--tracking-heading-sm);
   line-height: 1.2;
   color: var(--color-primary);
   margin-bottom: 2.5rem;

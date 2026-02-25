@@ -996,7 +996,7 @@ body::after {
 }
 
 .product-card {
-  background: var(--color-surface);
+  background: var(--color-background); /* stone — matches section, not floating white */
   overflow: hidden;
 }
 
@@ -1010,12 +1010,18 @@ body::after {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
+  /* Baseline moody treatment — matches editorial strip tone */
+  filter: brightness(0.88) contrast(1.04) saturate(0.82);
+  transition:
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, filter;
 }
 
 .product-card:hover .product-card-media img {
   transform: scale(1.05);
+  /* Lift to near-full colour on hover — same pattern as editorial strip */
+  filter: brightness(1.0) contrast(1.02) saturate(0.95);
 }
 
 .product-card-body {
@@ -1298,6 +1304,33 @@ body::after {
   /* Hero */
   .hero-heading {
     font-size: clamp(2.625rem, 10.5vw, 3.5rem);
+  }
+
+  /* Hero image: push product up so baked-in campaign text hides above viewport */
+  .hero-img {
+    object-position: center 85%;
+  }
+
+  /* Hero overlay: solid top cap buries baked-in image text on portrait viewports */
+  .hero-overlay {
+    background:
+      /* Solid black cap — fully covers the baked text area at top of image */
+      linear-gradient(to bottom,
+        rgba(26, 24, 22, 1.00)  0%,
+        rgba(26, 24, 22, 0.85) 18%,
+        rgba(26, 24, 22, 0.00) 36%
+      ),
+      /* Original bottom gradient for text legibility */
+      linear-gradient(to top,
+        rgba(26, 24, 22, 0.97) 0%,
+        rgba(26, 24, 22, 0.70) 28%,
+        rgba(26, 24, 22, 0.22) 52%,
+        rgba(26, 24, 22, 0.72) 100%
+      ),
+      linear-gradient(to right,
+        rgba(26, 24, 22, 0.35) 0%,
+        transparent 60%
+      );
   }
 
   .hero-scroll { display: none; }

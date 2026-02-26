@@ -68,7 +68,8 @@
       '.hero-line',
       '.hero-sub',
       '.email-form',
-      '.hero-badge'
+      '.hero-badge',
+    '.hero-secondary-cta'
     ], { opacity: 0, y: 28 });
 
     var heroTl = gsap.timeline({ delay: 0.25 });
@@ -99,7 +100,12 @@
         opacity: 1, y: 0,
         duration: 0.55,
         ease: 'power2.out'
-      }, '-=0.35');
+      }, '-=0.35')
+      .to('.hero-secondary-cta', {
+        opacity: 0.85, y: 0,
+        duration: 0.45,
+        ease: 'power2.out'
+      }, '-=0.25');
   }
 
 
@@ -472,5 +478,196 @@
       el.addEventListener('mouseleave', function () { cursorDot.classList.remove('is-hovering'); });
     });
   }
+
+
+  /* --------------------------------------------------
+     11. FAQ ACCORDION  (T1-C)
+     Accessible accordion: aria-expanded + CSS max-height transition.
+     Only one item open at a time.
+     -------------------------------------------------- */
+  var faqQuestions = document.querySelectorAll('.faq-question');
+
+  faqQuestions.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      var answerId   = btn.getAttribute('aria-controls');
+      var answer     = document.getElementById(answerId);
+
+      if (!answer) return;
+
+      // Close all other items
+      faqQuestions.forEach(function (otherBtn) {
+        if (otherBtn !== btn) {
+          otherBtn.setAttribute('aria-expanded', 'false');
+          var otherId  = otherBtn.getAttribute('aria-controls');
+          var otherAns = document.getElementById(otherId);
+          if (otherAns) {
+            otherAns.classList.remove('is-open');
+            otherAns.setAttribute('aria-hidden', 'true');
+          }
+        }
+      });
+
+      // Toggle current
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      answer.setAttribute('aria-hidden',  String(isExpanded));
+
+      if (isExpanded) {
+        answer.classList.remove('is-open');
+      } else {
+        answer.classList.add('is-open');
+      }
+    });
+  });
+
+
+  /* --------------------------------------------------
+     12. THREE RULES — CLIP-PATH STAGGERED REVEAL  (T3-A)
+     Each .rule card wipes left-to-right on scroll entry,
+     staggered 0.14s. Rule numbers count up 0 → 01/02/03.
+     -------------------------------------------------- */
+  if (!prefersReducedMotion && typeof gsap !== 'undefined') {
+
+    var ruleCards = document.querySelectorAll('.rule');
+
+    if (ruleCards.length) {
+      gsap.set(ruleCards, { clipPath: 'inset(0 100% 0 0)', opacity: 0 });
+
+      ScrollTrigger.create({
+        trigger: '#rules',
+        start: 'top 75%',
+        once: true,
+        onEnter: function () {
+          gsap.to(ruleCards, {
+            clipPath: 'inset(0 0% 0 0)',
+            opacity: 1,
+            duration: 1.1,
+            stagger: 0.14,
+            ease: 'power4.out',
+            onComplete: function () {
+              ruleCards.forEach(function (el) { el.style.clipPath = ''; });
+            }
+          });
+
+          // Animate rule number counters: 0 → 01, 02, 03
+          ruleCards.forEach(function (card, i) {
+            var numEl = card.querySelector('.rule-number');
+            if (!numEl) return;
+
+            var target  = i + 1;
+            var counter = { val: 0 };
+            setTimeout(function () {
+              gsap.to(counter, {
+                val: target,
+                duration: 0.9,
+                ease: 'power2.out',
+                snap: { val: 1 },
+                onUpdate: function () {
+                  numEl.textContent = '0' + Math.round(counter.val);
+                }
+              });
+            }, i * 140);
+          });
+        }
+      });
+    }
+  }
+
+
+  /* --------------------------------------------------
+     13. PRICE COMPARISON BARS — SCALE REVEAL  (T1-A)
+     CSS .is-animated class triggers scaleX(0→1) transition.
+     Staggered by 150ms per row.
+     -------------------------------------------------- */
+  if (!prefersReducedMotion && typeof gsap !== 'undefined') {
+
+    var compSection = document.querySelector('.comparison');
+    var compBars    = document.querySelectorAll('.comparison-bar');
+
+    if (compSection && compBars.length) {
+      ScrollTrigger.create({
+        trigger: compSection,
+        start: 'top 70%',
+        once: true,
+        onEnter: function () {
+          compBars.forEach(function (bar, i) {
+            setTimeout(function () {
+              bar.classList.add('is-animated');
+            }, i * 150);
+          });
+        }
+      });
+    }
+  }
+
+
+  /* --------------------------------------------------
+     14. PRODUCT "NOTIFY ME" FORMS  (T1-D)
+     Per-card email form handlers — K07, LK001, K34.
+     Reuses FORM_ID for Formspree; demo mode if not set.
+     -------------------------------------------------- */
+  var emailRegexNotify = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  document.querySelectorAll('.product-notify-form').forEach(function (form) {
+    var successEl   = form.nextElementSibling;
+    var productName = form.getAttribute('data-product') || 'this product';
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var emailInput = form.querySelector('input[type="email"]');
+      var btn        = form.querySelector('button[type="submit"]');
+
+      // Validate
+      if (!emailInput || !emailRegexNotify.test(emailInput.value.trim())) {
+        emailInput.classList.add('input-invalid');
+        emailInput.focus();
+        setTimeout(function () {
+          emailInput.classList.remove('input-invalid');
+        }, 1800);
+        return;
+      }
+
+      // Loading state
+      var originalText = btn.textContent;
+      btn.textContent  = '\u2026';
+      btn.disabled     = true;
+
+      // Success handler
+      var doSuccess = function () {
+        form.style.display = 'none';
+        if (successEl && successEl.classList.contains('product-notify-success')) {
+          successEl.textContent = "You\u2019re on the " + productName + " list.";
+        }
+      };
+
+      // Demo mode (no Formspree ID)
+      if (FORM_ID === 'YOUR_FORMSPREE_ID') {
+        setTimeout(doSuccess, 500);
+        return;
+      }
+
+      // Submit to Formspree
+      var fd = new FormData(form);
+      fd.append('product', productName);
+
+      fetch('https://formspree.io/f/' + FORM_ID, {
+        method: 'POST',
+        body: fd,
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(function (res) {
+          if (res.ok) {
+            doSuccess();
+          } else {
+            throw new Error('not ok');
+          }
+        })
+        .catch(function () {
+          btn.textContent = originalText;
+          btn.disabled    = false;
+        });
+    });
+  });
 
 })();

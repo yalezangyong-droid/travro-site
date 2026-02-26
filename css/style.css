@@ -1575,3 +1575,736 @@ body::after {
     font-size: clamp(2.25rem, 9.5vw, 3rem);
   }
 }
+
+
+/* ==========================================================
+   ADDITIONS v4.0 — Conversion Infrastructure + Design Upgrades
+   Added: testimonials, press, comparison, FAQ, notify forms,
+   nav CTA, hero secondary CTA, story stats, footer sub
+   ========================================================== */
+
+
+/* --------------------------------------------------
+   NAV CTA BUTTON  (T1-E)
+   -------------------------------------------------- */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 1rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  color: var(--color-accent);
+  font-size: 0.625rem;
+  font-weight: var(--font-weight-semi);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color var(--transition-base), color var(--transition-base);
+  white-space: nowrap;
+}
+
+.nav-cta:hover {
+  background-color: var(--color-accent);
+  color: var(--color-background);
+}
+
+.mobile-nav-cta {
+  display: inline-block;
+  margin-top: var(--space-sm);
+  padding: 0.625rem 1.25rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-semi);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.mobile-nav-cta:hover {
+  background-color: var(--color-accent);
+  color: var(--color-background);
+}
+
+
+/* --------------------------------------------------
+   HERO SECONDARY CTA  (T3-D)
+   -------------------------------------------------- */
+.hero-secondary-cta {
+  display: inline-block;
+  margin-top: 1.25rem;
+  color: var(--color-accent);
+  font-size: 0.625rem;
+  font-weight: var(--font-weight-semi);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity var(--transition-base), letter-spacing var(--transition-slow);
+}
+
+.hero-secondary-cta:hover {
+  opacity: 1;
+  letter-spacing: 0.16em;
+}
+
+
+/* --------------------------------------------------
+   STORY STAT ANCHOR  (T3-B)
+   Large typographic number before the section heading
+   -------------------------------------------------- */
+.story-stat-anchor {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+  margin-bottom: 2rem;
+}
+
+.story-anchor-number {
+  font-family: var(--font-family-display);
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-style: italic;
+  font-weight: var(--font-weight-normal);
+  color: var(--color-accent);
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+}
+
+.story-anchor-unit {
+  font-size: 0.625rem;
+  font-weight: var(--font-weight-semi);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  max-width: 6rem;
+  line-height: 1.4;
+}
+
+
+/* --------------------------------------------------
+   STORY STAT PILLS  (T2-B)
+   Inline stat pills between paragraphs
+   -------------------------------------------------- */
+.story-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 2rem 0;
+}
+
+.story-stat-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4375rem 0.875rem;
+  border: 1px solid var(--color-border);
+}
+
+.story-stat-pill span {
+  font-size: 0.625rem;
+  font-weight: var(--font-weight-semi);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+
+/* --------------------------------------------------
+   TESTIMONIALS SECTION  (T1-B)
+   3-column pull-quote grid + founding member count
+   -------------------------------------------------- */
+.testimonials {
+  padding: var(--space-3xl) 0;
+  background-color: var(--color-background);
+  border-top: 1px solid var(--color-border);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin: var(--space-xl) 0 var(--space-lg);
+}
+
+.testimonial-card {
+  margin: 0;
+  padding: var(--space-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.testimonial-quote {
+  font-family: var(--font-family-display);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--color-text);
+  margin: 0;
+  flex: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+}
+
+.testimonial-name {
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-semi);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.testimonial-role {
+  font-size: 0.625rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+}
+
+.testimonials-count {
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin: 0;
+}
+
+.testimonials-count strong {
+  color: var(--color-text);
+  font-weight: var(--font-weight-semi);
+}
+
+.testimonials-cta {
+  display: inline-block;
+  margin-left: 0.5rem;
+  color: var(--color-accent);
+  font-weight: var(--font-weight-semi);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: opacity var(--transition-base);
+}
+
+.testimonials-cta:hover {
+  opacity: 0.7;
+}
+
+
+/* --------------------------------------------------
+   PRESS PLACEHOLDER SECTION  (T2-A)
+   "As Covered By" — placeholder publication names
+   -------------------------------------------------- */
+.press {
+  padding: var(--space-xl) 0;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.press-label {
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.press-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.press-name {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  font-family: var(--font-family-display);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  opacity: 0.22;
+  transition: opacity 0.25s ease;
+  white-space: nowrap;
+  position: relative;
+}
+
+.press-name::after {
+  content: '/';
+  position: absolute;
+  right: -0.0625rem;
+  color: var(--color-border);
+  opacity: 0.6;
+}
+
+.press-name:last-child::after {
+  display: none;
+}
+
+.press-name:hover {
+  opacity: 0.55;
+}
+
+
+/* --------------------------------------------------
+   PRICE COMPARISON SECTION  (T1-A)
+   "The honest math." — dark editorial price table
+   -------------------------------------------------- */
+.comparison {
+  background-color: var(--color-text);
+  padding: var(--space-3xl) 0;
+  overflow: hidden;
+}
+
+.comparison-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+.comparison-header {
+  margin-bottom: var(--space-2xl);
+}
+
+.section-label--light {
+  color: rgba(245, 242, 238, 0.4);
+}
+
+.comparison-heading {
+  font-family: var(--font-family-display);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: var(--font-weight-normal);
+  font-style: italic;
+  letter-spacing: var(--tracking-heading);
+  line-height: 1.05;
+  color: var(--color-background);
+  margin: 0.5rem 0 1rem;
+}
+
+.comparison-sub {
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  color: rgba(245, 242, 238, 0.45);
+  text-transform: uppercase;
+}
+
+.comparison-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.comparison-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-md) 0;
+  border-top: 1px solid rgba(245, 242, 238, 0.1);
+}
+
+.comparison-row:last-child {
+  border-bottom: 1px solid rgba(245, 242, 238, 0.1);
+}
+
+.comparison-row--travro .comparison-brand-name {
+  color: var(--color-accent);
+}
+
+.comparison-row--travro .comparison-price {
+  color: var(--color-accent);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.comparison-row--travro .comparison-bar {
+  background-color: var(--color-accent);
+}
+
+.comparison-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.comparison-brand-name {
+  font-size: 0.625rem;
+  font-weight: var(--font-weight-semi);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-background);
+}
+
+.comparison-brand-tag {
+  font-size: 0.5625rem;
+  letter-spacing: 0.04em;
+  color: rgba(245, 242, 238, 0.35);
+}
+
+.comparison-price-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.comparison-price {
+  font-family: var(--font-family-display);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: var(--font-weight-normal);
+  color: rgba(245, 242, 238, 0.7);
+  line-height: 1;
+  letter-spacing: var(--tracking-heading);
+}
+
+.comparison-bar-wrap {
+  height: 2px;
+  background-color: rgba(245, 242, 238, 0.08);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.comparison-bar {
+  height: 100%;
+  width: var(--bar-pct, 0%);
+  background-color: rgba(245, 242, 238, 0.28);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.comparison-bar.is-animated {
+  transform: scaleX(1);
+  transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.comparison-caveat {
+  margin-top: var(--space-xl);
+  font-size: 0.5625rem;
+  letter-spacing: 0.05em;
+  color: rgba(245, 242, 238, 0.25);
+}
+
+
+/* --------------------------------------------------
+   PRODUCT PRICE ESTIMATE + NOTIFY FORM  (T1-D, T3-C)
+   Per-card estimated price + mini inline email form
+   -------------------------------------------------- */
+.product-price-est {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: var(--font-weight-semi);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+.product-notify-form {
+  display: flex;
+  gap: 0.375rem;
+  margin-top: 0.625rem;
+}
+
+.product-notify-form input[type="email"] {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0.75rem;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  font-family: var(--font-family);
+  font-size: 0.625rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color var(--transition-base);
+}
+
+.product-notify-form input[type="email"]::placeholder {
+  color: rgba(44, 44, 44, 0.3);
+}
+
+.product-notify-form input[type="email"]:focus {
+  border-color: var(--color-accent);
+}
+
+.product-notify-form button {
+  padding: 0.5rem 0.875rem;
+  background-color: var(--color-text);
+  border: 1px solid var(--color-text);
+  color: var(--color-background);
+  font-family: var(--font-family);
+  font-size: 0.5625rem;
+  font-weight: var(--font-weight-semi);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+  white-space: nowrap;
+}
+
+.product-notify-form button:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.product-notify-success {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+  min-height: 1.1em;
+}
+
+
+/* --------------------------------------------------
+   FAQ ACCORDION  (T1-C)
+   Accessible, CSS max-height transition accordion
+   -------------------------------------------------- */
+.faq {
+  padding: var(--space-3xl) 0;
+  background-color: var(--color-background);
+  border-top: 1px solid var(--color-border);
+}
+
+.faq-heading {
+  font-family: var(--font-family-display);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: var(--font-weight-normal);
+  font-style: italic;
+  letter-spacing: var(--tracking-heading);
+  line-height: 1.1;
+  color: var(--color-text);
+  margin: var(--space-xs) 0 var(--space-xl);
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-item {
+  border-top: 1px solid var(--color-border);
+}
+
+.faq-item:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 1.25rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  transition: color var(--transition-base);
+}
+
+.faq-question:hover {
+  color: var(--color-accent);
+}
+
+.faq-question[aria-expanded="true"] {
+  color: var(--color-accent);
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  position: relative;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.45;
+  transition: opacity var(--transition-base), transform var(--transition-slow);
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: currentColor;
+}
+
+.faq-icon::before {
+  width: 8px;
+  height: 1px;
+}
+
+.faq-icon::after {
+  width: 1px;
+  height: 8px;
+  transition: transform var(--transition-slow), opacity var(--transition-slow);
+}
+
+.faq-question[aria-expanded="true"] .faq-icon {
+  opacity: 1;
+}
+
+.faq-question[aria-expanded="true"] .faq-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-answer.is-open {
+  max-height: 500px;
+}
+
+.faq-answer p {
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  padding-bottom: 1.5rem;
+  margin: 0;
+}
+
+
+/* --------------------------------------------------
+   FOOTER CTA SUB-LABEL  (T2-C)
+   -------------------------------------------------- */
+.footer-cta-sub {
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: rgba(245, 242, 238, 0.4);
+  margin: 0.375rem 0 0;
+  line-height: 1.6;
+}
+
+
+/* --------------------------------------------------
+   FORM VALIDATION CLASSES
+   -------------------------------------------------- */
+.input-invalid {
+  border-color: rgba(196, 149, 106, 0.65) !important;
+}
+
+.is-error {
+  font-size: 0.6875rem;
+  color: rgba(196, 149, 106, 0.85);
+  margin-top: 0.375rem;
+  letter-spacing: 0.02em;
+}
+
+
+/* ==========================================================
+   RESPONSIVE ADDITIONS — new sections
+   ========================================================== */
+
+@media (max-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .comparison-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .comparison-price-col {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .comparison-bar-wrap {
+    flex: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-cta {
+    display: none;
+  }
+
+  .story-anchor-number {
+    font-size: clamp(3rem, 12vw, 5rem);
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .press-name {
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .comparison-inner {
+    padding: 0 var(--space-lg);
+  }
+
+  .comparison-price-col {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .comparison-bar-wrap {
+    flex: 1;
+  }
+
+  .product-notify-form {
+    flex-direction: column;
+  }
+
+  .product-notify-form button {
+    width: 100%;
+  }
+
+  .faq-heading {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+  }
+
+  .faq-question {
+    font-size: 0.8125rem;
+    padding: 1rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-anchor-number {
+    font-size: clamp(2.75rem, 14vw, 4rem);
+  }
+
+  .story-stats {
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .comparison-inner {
+    padding: 0 var(--space-md);
+  }
+
+  .comparison-heading {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+  }
+
+  .press-name {
+    font-size: 0.5625rem;
+    padding: 0.375rem 0.75rem;
+  }
+}

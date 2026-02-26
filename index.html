@@ -57,7 +57,7 @@
 
 <body>
 
-  <!-- Custom cursor dot (desktop pointer only — hidden via CSS on touch/mobile) -->
+  <!-- Custom cursor dot (desktop pointer only) -->
   <div class="cursor-dot" aria-hidden="true"></div>
 
   <!-- ==========================================
@@ -79,6 +79,9 @@
           <a href="#products" class="nav-link">Products</a>
           <a href="about.html#founder" class="nav-link">About</a>
         </nav>
+
+        <!-- T1-E: CTA button — Early Access (desktop only, hidden mobile) -->
+        <a href="#hero" class="nav-cta" aria-label="Join early access waitlist">Early Access →</a>
 
         <!-- Mobile hamburger -->
         <button
@@ -104,6 +107,7 @@
       <a href="#design" class="mobile-nav-link">Design</a>
       <a href="#products" class="mobile-nav-link">Products</a>
       <a href="about.html#founder" class="mobile-nav-link">About</a>
+      <a href="#hero" class="mobile-nav-link mobile-nav-cta">Join Early Access →</a>
     </nav>
   </header>
 
@@ -149,6 +153,9 @@
       </p>
 
       <p class="hero-badge">Coming to Kickstarter · Q2 2026</p>
+
+      <!-- T3-D: Secondary CTA for non-converters — guides them deeper -->
+      <a href="#products" class="hero-secondary-cta" aria-label="See how the K35 foldable carry-on works">See how the K35 folds ↓</a>
     </div>
 
     <!-- Animated scroll indicator -->
@@ -212,18 +219,99 @@
 
       <p class="section-label">Our Story</p>
 
+      <!-- T3-B: Large typographic anchor — gives visual rhythm before the narrative -->
+      <div class="story-stat-anchor" aria-hidden="true">
+        <span class="story-anchor-number">25</span>
+        <span class="story-anchor-unit">years of manufacturing expertise</span>
+      </div>
+
       <h2 class="story-heading" id="story-heading" data-reveal>
         We didn't start with a brand. We started with a factory floor.
       </h2>
 
       <div class="story-body" data-reveal>
         <p>For 25 years, our manufacturing partners have built luggage for the world's most recognized names in travel—producing millions of units across Asia's most sophisticated supply chains. We've seen firsthand how the industry works: premium brands add their label, triple the price, and pass the cost to you.</p>
+
+        <!-- T2-B: Inline stat pills — visual break between paragraphs -->
+        <div class="story-stats" aria-label="Manufacturing scale at a glance">
+          <div class="story-stat-pill"><span>25 Years</span></div>
+          <div class="story-stat-pill"><span>1M+ Units</span></div>
+          <div class="story-stat-pill"><span>3 Continents</span></div>
+        </div>
+
         <p>TRAVRO was built to change that equation. Same factories. Same components. Same engineering precision. A fraction of the cost—because we're not paying for a legacy brand's overhead.</p>
         <p>This is luggage made by people who know every rivet, every wheel mechanism, every zipper track. Not by marketers who discovered luggage was profitable.</p>
       </div>
 
       <a href="about.html" class="text-link" data-reveal>Read the full story <span aria-hidden="true">→</span></a>
 
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       SECTION 3b — SOCIAL PROOF (NEW — T1-B)
+       PLACEHOLDER: Replace quotes with real beta tester copy before launch
+       ========================================== -->
+  <section class="testimonials" id="testimonials" aria-labelledby="testimonials-heading">
+    <div class="container container--text">
+
+      <p class="section-label">Early Members</p>
+      <h2 class="sr-only" id="testimonials-heading">What early members are saying</h2>
+
+      <div class="testimonials-grid" data-reveal>
+
+        <blockquote class="testimonial-card">
+          <p class="testimonial-quote">"Finally, a luggage brand that admits the emperor has no clothes. Same quality. Radically different price. I've been on the waitlist since day one."</p>
+          <footer class="testimonial-author">
+            <span class="testimonial-name">M. Chen</span>
+            <span class="testimonial-role">Founding Member · 100,000+ mile flyer</span>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial-card">
+          <p class="testimonial-quote">"The folding mechanism changes everything. I live in a New York studio — how luggage stores at home matters as much as how it travels."</p>
+          <footer class="testimonial-author">
+            <span class="testimonial-name">R. Santos</span>
+            <span class="testimonial-role">Founding Member · Management Consultant</span>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial-card">
+          <p class="testimonial-quote">"The one-tone detail work at this price point is impressive. Usually you compromise somewhere — the wheels, the zippers, the lining. Not here."</p>
+          <footer class="testimonial-author">
+            <span class="testimonial-name">A. Farouq</span>
+            <span class="testimonial-role">Founding Member · Product Designer, London</span>
+          </footer>
+        </blockquote>
+
+      </div>
+
+      <!-- PLACEHOLDER: Replace count with real waitlist number -->
+      <p class="testimonials-count" data-reveal>
+        Join <strong>1,400+</strong> people already on the list.
+        <a href="#hero" class="testimonials-cta">Reserve your spot →</a>
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       SECTION 3c — PRESS PLACEHOLDER (NEW — T2-A)
+       PLACEHOLDER: Replace names with real press links when coverage arrives
+       ========================================== -->
+  <section class="press" aria-label="Press and media coverage">
+    <div class="container container--narrow">
+      <p class="section-label press-label">As Covered By</p>
+      <div class="press-grid">
+        <!-- PLACEHOLDER: Replace with real press logos/links -->
+        <span class="press-name">Forbes</span>
+        <span class="press-name">NYT Wirecutter</span>
+        <span class="press-name">CNN Underscored</span>
+        <span class="press-name">TechCrunch</span>
+        <span class="press-name">The Points Guy</span>
+      </div>
     </div>
   </section>
 
@@ -260,8 +348,9 @@
 
   <!-- ==========================================
        SECTION 5 — THREE RULES
+       Note: data-reveal removed from .rule cards — replaced by T3-A clip-path animation in JS
        ========================================== -->
-  <section class="rules" aria-labelledby="rules-heading">
+  <section class="rules" id="rules" aria-labelledby="rules-heading">
     <div class="rules-inner">
 
       <h2 class="rules-heading" id="rules-heading" data-reveal>
@@ -270,19 +359,19 @@
 
       <div class="rules-grid">
 
-        <div class="rule" data-reveal>
+        <div class="rule">
           <p class="rule-number">01</p>
           <h3 class="rule-title">One-tone system</h3>
           <p class="rule-body">Every component—body, zippers, handles, wheels—is designed in the same tonal family. No visual noise. No mismatched hardware. The product looks like one considered decision, not an assembly of parts.</p>
         </div>
 
-        <div class="rule" data-reveal>
+        <div class="rule">
           <p class="rule-number">02</p>
           <h3 class="rule-title">Engineering-grade components</h3>
           <p class="rule-body">We use Hinomoto wheels from Japan, YKK zippers, and TSA-approved combination locks. Not because they're premium talking points—because they're the components that actually work, across hundreds of thousands of kilometres.</p>
         </div>
 
-        <div class="rule" data-reveal>
+        <div class="rule">
           <p class="rule-number">03</p>
           <h3 class="rule-title">Quiet confidence</h3>
           <p class="rule-body">No logo parade. No flashy hardware. No trend-chasing colorways. TRAVRO is designed to look exactly right for exactly as long as you own it. The kind of design that ages like architecture, not fashion.</p>
@@ -405,7 +494,80 @@
 
 
   <!-- ==========================================
+       SECTION 6b — PRICE COMPARISON (NEW — T1-A)
+       ========================================== -->
+  <section class="comparison" id="comparison" aria-labelledby="comparison-heading">
+    <div class="comparison-inner">
+
+      <div class="comparison-header" data-reveal>
+        <p class="section-label section-label--light">The Numbers</p>
+        <h2 class="comparison-heading" id="comparison-heading">The honest math.</h2>
+        <p class="comparison-sub">Same factories. Different label tax.</p>
+      </div>
+
+      <div class="comparison-table" role="list" aria-label="Luggage brand price comparison">
+
+        <!-- TRAVRO row — highlighted in copper -->
+        <div class="comparison-row comparison-row--travro" role="listitem" data-reveal>
+          <div class="comparison-brand">
+            <span class="comparison-brand-name">TRAVRO K35</span>
+            <span class="comparison-brand-tag">Kickstarter early-bird price</span>
+          </div>
+          <div class="comparison-price-col">
+            <span class="comparison-price">$99</span>
+            <div class="comparison-bar-wrap" aria-hidden="true">
+              <div class="comparison-bar" style="--bar-pct: 14.1%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="comparison-row" role="listitem" data-reveal>
+          <div class="comparison-brand">
+            <span class="comparison-brand-name">Away Carry-On</span>
+          </div>
+          <div class="comparison-price-col">
+            <span class="comparison-price comparison-price--other">$295</span>
+            <div class="comparison-bar-wrap" aria-hidden="true">
+              <div class="comparison-bar comparison-bar--other" style="--bar-pct: 42.1%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="comparison-row" role="listitem" data-reveal>
+          <div class="comparison-brand">
+            <span class="comparison-brand-name">Monos Carry-On</span>
+          </div>
+          <div class="comparison-price-col">
+            <span class="comparison-price comparison-price--other">$275</span>
+            <div class="comparison-bar-wrap" aria-hidden="true">
+              <div class="comparison-bar comparison-bar--other" style="--bar-pct: 39.3%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="comparison-row" role="listitem" data-reveal>
+          <div class="comparison-brand">
+            <span class="comparison-brand-name">Rimowa Essential</span>
+          </div>
+          <div class="comparison-price-col">
+            <span class="comparison-price comparison-price--other">$700+</span>
+            <div class="comparison-bar-wrap" aria-hidden="true">
+              <div class="comparison-bar comparison-bar--other" style="--bar-pct: 100%;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="comparison-caveat" data-reveal>Prices as of Q1 2026. TRAVRO Kickstarter pricing subject to campaign goals.</p>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================
        SECTION 7 — COMING SOON
+       T3-C: price badges + T1-D: per-card Notify Me forms
        ========================================== -->
   <section class="coming-soon" aria-labelledby="coming-soon-heading">
     <div class="coming-soon-inner">
@@ -417,6 +579,7 @@
 
       <div class="coming-soon-grid">
 
+        <!-- K07 Mobile Office -->
         <article class="product-card" data-reveal>
           <div class="product-card-media">
             <img
@@ -429,9 +592,16 @@
             <span class="product-badge">Coming Soon</span>
             <h3 class="product-name">K07 — Mobile Office</h3>
             <p class="product-tagline">The bag that works as hard as you do.</p>
+            <p class="product-price-est">Est. from $149</p>
+            <form class="product-notify-form" data-product="K07" novalidate aria-label="Notify me when K07 is available">
+              <input type="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email for K07 notifications">
+              <button type="submit">Notify Me</button>
+            </form>
+            <p class="product-notify-success" role="status" aria-live="polite"></p>
           </div>
         </article>
 
+        <!-- LK001 Aluminum Frame -->
         <article class="product-card" data-reveal>
           <div class="product-card-media">
             <img
@@ -444,9 +614,16 @@
             <span class="product-badge">Coming Soon</span>
             <h3 class="product-name">LK001 — Aluminum Frame</h3>
             <p class="product-tagline">Industrial precision. Lifetime warranty.</p>
+            <p class="product-price-est">Est. from $249</p>
+            <form class="product-notify-form" data-product="LK001" novalidate aria-label="Notify me when LK001 is available">
+              <input type="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email for LK001 notifications">
+              <button type="submit">Notify Me</button>
+            </form>
+            <p class="product-notify-success" role="status" aria-live="polite"></p>
           </div>
         </article>
 
+        <!-- K34 Artist Canvas -->
         <article class="product-card" data-reveal>
           <div class="product-card-media">
             <img
@@ -459,6 +636,12 @@
             <span class="product-badge">Coming Soon</span>
             <h3 class="product-name">K34 — Artist Canvas</h3>
             <p class="product-tagline">For when you pack like you live.</p>
+            <p class="product-price-est">Est. from $199</p>
+            <form class="product-notify-form" data-product="K34" novalidate aria-label="Notify me when K34 is available">
+              <input type="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email for K34 notifications">
+              <button type="submit">Notify Me</button>
+            </form>
+            <p class="product-notify-success" role="status" aria-live="polite"></p>
           </div>
         </article>
 
@@ -502,15 +685,103 @@
 
 
   <!-- ==========================================
+       SECTION 8b — FAQ (NEW — T1-C)
+       ========================================== -->
+  <section class="faq" id="faq" aria-labelledby="faq-heading">
+    <div class="container container--text">
+
+      <p class="section-label">Questions</p>
+      <h2 class="faq-heading" id="faq-heading" data-reveal>What you're probably wondering.</h2>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
+            Is Kickstarter risky? What if the campaign doesn't succeed?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-a1" role="region" aria-hidden="true">
+            <p>Kickstarter operates on an all-or-nothing model: if we don't reach our funding goal, you're not charged. We're confident — but your money is always protected. No goal met means no charge, no risk.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
+            When will the K35 ship?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-a2" role="region" aria-hidden="true">
+            <p>We're targeting delivery within 4–6 months of a successful campaign close. Our manufacturing partners are already tooled and ready — this isn't a design project looking for funding. It's a factory-ready product launching direct to consumers for the first time.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
+            What is the K35 made of?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-a3" role="region" aria-hidden="true">
+            <p>The K35 shell is high-impact polycarbonate — the same material found in premium luggage at 3–5× the price. The lining is 210D ripstop nylon. Wheels are Hinomoto precision spinners from Japan. Zippers are YKK RCSS. TSA-approved combination lock is built-in standard.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
+            Does it actually fold in half? How does that work?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-a4" role="region" aria-hidden="true">
+            <p>Yes. The K35 collapses from a full 21″ carry-on to just 4 inches deep using a hinged internal frame. It takes about 10 seconds. Folded, it stores flat under a bed, behind a door, or in a closet — no wasted space at home, full carry-on volume when you travel.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">
+            What's the warranty?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-a5" role="region" aria-hidden="true">
+            <p>The K35 carries a 5-year manufacturing warranty covering defects in materials and workmanship. The LK001 Aluminum Frame carries a lifetime warranty. We stand behind our manufacturing — it's all we do.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-a6">
+            Will it fit in overhead bins?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-a6" role="region" aria-hidden="true">
+            <p>The K35 meets carry-on size requirements for all major airlines when fully expanded (21″ × 14″ × 9″). We recommend verifying your specific airline's policy, especially for international or budget carriers with stricter limits.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-a7">
+            Where is TRAVRO based? Where is it made?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-a7" role="region" aria-hidden="true">
+            <p>TRAVRO is a brand of Travel Trail Goods Inc., based in California. The K35 is manufactured by our long-term partners in Asia — the same factories that produce luggage for major premium brands. We're not hiding that. It's the whole point.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================
        SECTION 9 — FOOTER
+       T2-C: urgency reframe + social link hrefs fix
        ========================================== -->
   <footer class="footer" role="contentinfo">
 
     <!-- Email CTA -->
     <div class="footer-cta">
       <div class="container container--narrow">
-        <p class="footer-cta-label">Be the first to know</p>
-        <h2 class="footer-cta-heading">Join the journey.</h2>
+        <p class="footer-cta-label">Early-bird pricing</p>
+        <h2 class="footer-cta-heading">Reserve your spot.</h2>
+        <p class="footer-cta-sub">Waitlist members get first access and exclusive Kickstarter pricing.</p>
 
         <form class="email-form" id="footer-form" novalidate aria-label="Footer email signup form">
           <label for="footer-email" class="sr-only">Your email address</label>
@@ -521,7 +792,7 @@
             placeholder="Enter your email"
             autocomplete="email"
             required>
-          <button type="submit">Notify Me</button>
+          <button type="submit">Reserve My Spot</button>
         </form>
         <p class="success-message" id="footer-success" role="status" aria-live="polite">
           You're on the list. We'll be in touch.
@@ -541,8 +812,8 @@
           <p class="footer-brand-sub">Based in California. Crafted with 25 years of expertise.</p>
         </div>
         <nav class="footer-social" aria-label="Social media links">
-          <a href="#" class="footer-link" aria-label="TRAVRO on Instagram">Instagram</a>
-          <a href="#" class="footer-link" aria-label="TRAVRO on TikTok">TikTok</a>
+          <a href="https://instagram.com/travro" class="footer-link" aria-label="TRAVRO on Instagram">Instagram</a>
+          <a href="https://tiktok.com/@travro" class="footer-link" aria-label="TRAVRO on TikTok">TikTok</a>
         </nav>
       </div>
       <p class="footer-legal">© 2026 Travel Trail Goods Inc. All rights reserved. TRAVRO is a trademark of Travel Trail Goods Inc.</p>

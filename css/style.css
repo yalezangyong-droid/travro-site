@@ -10,7 +10,8 @@
   /* Brand Colors */
   --color-primary:        #2C2C2C;
   --color-background:     #F5F2EE;
-  --color-accent:         #C4956A;  /* warm copper — primary brand accent */
+  --color-accent:         #C4956A;  /* warm copper — large decorative elements only (≥24px) */
+  --color-accent-text:    #7A5835;  /* dark copper — small text labels (≥4.5:1 on --color-background) */
   --color-sage:           #8B8A6E;  /* deprecated — do not use in new work; reserved per charter v3 */
   --color-text:           #2C2C2C;
   --color-text-secondary: #6B6560;  /* warm taupe — harmonises with copper + stone */
@@ -308,16 +309,16 @@ body::after {
 }
 
 .header.is-scrolled .nav-link:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .nav-link.is-active {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   opacity: 1;
 }
 
 .header.is-scrolled .nav-link.is-active {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 /* Hamburger toggle */
@@ -396,7 +397,7 @@ body::after {
 .mobile-nav-link:last-child { border-bottom: none; }
 
 .mobile-nav-link:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   background: rgba(44, 44, 44, 0.03);
 }
 
@@ -634,7 +635,7 @@ body::after {
   font-weight: 600;
   letter-spacing: var(--tracking-brand);
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   margin-bottom: 2rem;
 }
 
@@ -677,8 +678,8 @@ body::after {
 }
 
 .text-link:hover {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border-color: var(--color-accent-text);
   gap: 0.625rem;
 }
 
@@ -921,7 +922,7 @@ body::after {
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   margin-bottom: 1.5rem;
 }
 
@@ -987,7 +988,7 @@ body::after {
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.06em;
-  color: var(--color-accent); /* copper text */
+  color: var(--color-accent-text); /* dark copper text — WCAG AA on light background */
   margin-top: 1.75rem;
   line-height: 1.5;
 }
@@ -1104,7 +1105,7 @@ body::after {
   font-weight: 600;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   margin-bottom: 0.625rem;
 }
 
@@ -1593,7 +1594,7 @@ body::after {
   padding: 0.375rem 1rem;
   border: 1px solid var(--color-accent);
   border-radius: 999px;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   font-size: 0.625rem;
   font-weight: var(--font-weight-semi);
   letter-spacing: var(--tracking-caps);
@@ -1614,7 +1615,7 @@ body::after {
   padding: 0.625rem 1.25rem;
   border: 1px solid var(--color-accent);
   border-radius: 999px;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   font-size: 0.75rem;
   font-weight: var(--font-weight-semi);
   letter-spacing: var(--tracking-caps);
@@ -1635,7 +1636,7 @@ body::after {
 .hero-secondary-cta {
   display: inline-block;
   margin-top: 1.25rem;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   font-size: 0.625rem;
   font-weight: var(--font-weight-semi);
   letter-spacing: 0.12em;
@@ -1999,7 +2000,7 @@ body::after {
   font-weight: var(--font-weight-semi);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   margin-bottom: 0.75rem;
 }
 
@@ -2056,7 +2057,7 @@ body::after {
   margin-top: 0.5rem;
   font-size: 0.625rem;
   letter-spacing: 0.04em;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   min-height: 1.1em;
 }
 
@@ -2115,11 +2116,11 @@ body::after {
 }
 
 .faq-question:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .faq-question[aria-expanded="true"] {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .faq-icon {
@@ -2306,5 +2307,98 @@ body::after {
   .press-name {
     font-size: 0.5625rem;
     padding: 0.375rem 0.75rem;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   SKIP NAVIGATION LINK  (A2 — Accessibility)
+   Visually hidden until focused by keyboard
+   --------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-sm);
+  z-index: 10001;
+  padding: 0.5rem 1rem;
+  background: var(--color-primary);
+  color: var(--color-background);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-semi);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+
+/* ---------------------------------------------------------
+   NOTIFY NOTE  (U3 — Form relationship clarification)
+   --------------------------------------------------------- */
+.notify-note {
+  font-size: 0.5625rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text-secondary);
+  margin-top: 0.375rem;
+  line-height: 1.5;
+  opacity: 0.75;
+}
+
+
+/* ---------------------------------------------------------
+   PREFERS-REDUCED-MOTION  (A3 — Accessibility)
+   Nullifies CSS transitions for users who opt out of motion.
+   GSAP animations are gated separately in main.js via
+   window.matchMedia('(prefers-reduced-motion: reduce)').
+   --------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  /* FAQ accordion — instant open/close */
+  .faq-answer {
+    transition: none !important;
+  }
+
+  /* Header pill — no scroll transition */
+  .header,
+  .nav-pill {
+    transition: none !important;
+  }
+
+  /* Cursor dot — hide entirely (motion element) */
+  .cursor-dot {
+    display: none !important;
+  }
+
+  /* Scroll indicator — stop animation */
+  .hero-scroll-line {
+    animation: none !important;
+  }
+
+  /* Strip items — no clip-path transition */
+  .strip-item {
+    transition: none !important;
+  }
+
+  /* Manifesto divider — no scale transition */
+  .manifesto-divider {
+    transition: none !important;
+  }
+
+  /* Skip link — instant show on focus (no slide) */
+  .skip-link {
+    transition: none !important;
   }
 }

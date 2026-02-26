@@ -197,6 +197,39 @@ travro-site/
 
 ---
 
+## Animation Architecture
+
+All animations use **GSAP 3.12.5 + ScrollTrigger**, loaded via CDN (no npm required). The JS is structured as 14 numbered blocks in `js/main.js`.
+
+**Reduced-motion gate:** Every GSAP block checks `window.matchMedia('(prefers-reduced-motion: reduce)').matches` and exits early if the user has opted out of motion. CSS transitions are independently nullified via `@media (prefers-reduced-motion: reduce)` in `style.css`.
+
+**Animation blocks:**
+
+| # | Section | Technique |
+|---|---------|-----------|
+| 1 | Hero | GSAP timeline, `opacity` + `y`, staggered sequence |
+| 2 | Editorial strip | ScrollTrigger clip-path wipe, staggered by 0.08s |
+| 3 | Story section | ScrollTrigger `data-reveal` batch fade-up |
+| 4 | Manifesto | ScrollTrigger pin + scrub word-by-word opacity |
+| 5 | Three Rules | Not GSAP — see block 12 |
+| 6 | Stack cards | GSAP sticky scroll with `scrub: 1.2` |
+| 7 | `data-reveal` elements | Global ScrollTrigger batch, `opacity` + `y` |
+| 8 | Manifesto divider | ScrollTrigger `scaleX` expand |
+| 9 | Story stat pills | ScrollTrigger fade-in |
+| 10 | Footer wordmark | ScrollTrigger `opacity` reveal |
+| 11 | FAQ accordion | Vanilla JS — CSS `max-height` transition, no GSAP |
+| 12 | Three Rules | GSAP clip-path stagger + number counter `snap` |
+| 13 | Price comparison bars | CSS class toggle + `setTimeout` stagger |
+| 14 | Notify Me forms | Vanilla JS — `fetch` POST handlers |
+
+**To disable all animations for testing:** In the browser console, run:
+```js
+document.documentElement.style.setProperty('--gsap-disabled', '1');
+```
+Or set `prefers-reduced-motion: reduce` via DevTools → Rendering → Emulate prefers-reduced-motion.
+
+---
+
 ## Design Decisions
 
 All copy is final and sourced verbatim from the Project Charter (`docs/TRAVRO_Website_Project_Charter_v2.md` Section 4, v3). Do not rewrite or paraphrase.

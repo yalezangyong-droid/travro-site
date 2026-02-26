@@ -57,6 +57,8 @@
 
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Custom cursor dot (desktop pointer only) -->
   <div class="cursor-dot" aria-hidden="true"></div>
 
@@ -74,10 +76,11 @@
 
         <!-- Desktop nav -->
         <nav class="nav-links" aria-label="Main navigation">
-          <a href="about.html" class="nav-link">Our Story</a>
+          <a href="#story" class="nav-link">Our Story</a>
           <a href="#design" class="nav-link">Design</a>
           <a href="#products" class="nav-link">Products</a>
-          <a href="about.html#founder" class="nav-link">About</a>
+          <a href="#faq" class="nav-link">FAQ</a>
+          <a href="#founder" class="nav-link">About</a>
         </nav>
 
         <!-- T1-E: CTA button — Early Access (desktop only, hidden mobile) -->
@@ -103,14 +106,16 @@
       id="mobile-nav"
       aria-label="Mobile navigation"
       aria-hidden="true">
-      <a href="about.html" class="mobile-nav-link">Our Story</a>
+      <a href="#story" class="mobile-nav-link">Our Story</a>
       <a href="#design" class="mobile-nav-link">Design</a>
       <a href="#products" class="mobile-nav-link">Products</a>
-      <a href="about.html#founder" class="mobile-nav-link">About</a>
+      <a href="#faq" class="mobile-nav-link">FAQ</a>
+      <a href="#founder" class="mobile-nav-link">About</a>
       <a href="#hero" class="mobile-nav-link mobile-nav-cta">Join Early Access →</a>
     </nav>
   </header>
 
+  <main id="main-content">
 
   <!-- ==========================================
        SECTION 1 — HERO
@@ -135,7 +140,7 @@
         <span class="hero-line">Travel in</span>
         <span class="hero-line">your own light.</span>
       </h1>
-      <p class="hero-sub">Design-forward luggage engineered by 25 years of manufacturing expertise. Not a brand with a factory. A factory with a brand.</p>
+      <p class="hero-sub">Not a brand with a factory. A factory with a brand.</p>
 
       <form class="email-form" id="hero-form" novalidate aria-label="Email signup form">
         <label for="hero-email" class="sr-only">Your email address</label>
@@ -243,75 +248,8 @@
         <p>This is luggage made by people who know every rivet, every wheel mechanism, every zipper track. Not by marketers who discovered luggage was profitable.</p>
       </div>
 
-      <a href="about.html" class="text-link" data-reveal>Read the full story <span aria-hidden="true">→</span></a>
+      <a href="#founder" class="text-link" data-reveal>Read the full story <span aria-hidden="true">→</span></a>
 
-    </div>
-  </section>
-
-
-  <!-- ==========================================
-       SECTION 3b — SOCIAL PROOF (NEW — T1-B)
-       PLACEHOLDER: Replace quotes with real beta tester copy before launch
-       ========================================== -->
-  <section class="testimonials" id="testimonials" aria-labelledby="testimonials-heading">
-    <div class="container container--text">
-
-      <p class="section-label">Early Members</p>
-      <h2 class="sr-only" id="testimonials-heading">What early members are saying</h2>
-
-      <div class="testimonials-grid" data-reveal>
-
-        <blockquote class="testimonial-card">
-          <p class="testimonial-quote">"Finally, a luggage brand that admits the emperor has no clothes. Same quality. Radically different price. I've been on the waitlist since day one."</p>
-          <footer class="testimonial-author">
-            <span class="testimonial-name">M. Chen</span>
-            <span class="testimonial-role">Founding Member · 100,000+ mile flyer</span>
-          </footer>
-        </blockquote>
-
-        <blockquote class="testimonial-card">
-          <p class="testimonial-quote">"The folding mechanism changes everything. I live in a New York studio — how luggage stores at home matters as much as how it travels."</p>
-          <footer class="testimonial-author">
-            <span class="testimonial-name">R. Santos</span>
-            <span class="testimonial-role">Founding Member · Management Consultant</span>
-          </footer>
-        </blockquote>
-
-        <blockquote class="testimonial-card">
-          <p class="testimonial-quote">"The one-tone detail work at this price point is impressive. Usually you compromise somewhere — the wheels, the zippers, the lining. Not here."</p>
-          <footer class="testimonial-author">
-            <span class="testimonial-name">A. Farouq</span>
-            <span class="testimonial-role">Founding Member · Product Designer, London</span>
-          </footer>
-        </blockquote>
-
-      </div>
-
-      <!-- PLACEHOLDER: Replace count with real waitlist number -->
-      <p class="testimonials-count" data-reveal>
-        Join <strong>1,400+</strong> people already on the list.
-        <a href="#hero" class="testimonials-cta">Reserve your spot →</a>
-      </p>
-
-    </div>
-  </section>
-
-
-  <!-- ==========================================
-       SECTION 3c — PRESS PLACEHOLDER (NEW — T2-A)
-       PLACEHOLDER: Replace names with real press links when coverage arrives
-       ========================================== -->
-  <section class="press" aria-label="Press and media coverage">
-    <div class="container container--narrow">
-      <p class="section-label press-label">As Covered By</p>
-      <div class="press-grid">
-        <!-- PLACEHOLDER: Replace with real press logos/links -->
-        <span class="press-name">Forbes</span>
-        <span class="press-name">NYT Wirecutter</span>
-        <span class="press-name">CNN Underscored</span>
-        <span class="press-name">TechCrunch</span>
-        <span class="press-name">The Points Guy</span>
-      </div>
     </div>
   </section>
 
@@ -485,7 +423,7 @@
         <h2 class="stack-card-title" id="stack-title-3">One tone.<br>Zero compromises.</h2>
         <p class="stack-card-body">Every element—shell, lining, zippers, hardware—exists within a single tonal system. The result is a product that looks like one considered decision, not an assembly of sourced parts. Minimalism as engineering, not as aesthetic.</p>
 
-        <a href="about.html" class="text-link">Read the full story <span aria-hidden="true">→</span></a>
+        <a href="#founder" class="text-link">Meet the founder <span aria-hidden="true">→</span></a>
       </div>
 
     </article>
@@ -597,6 +535,7 @@
               <input type="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email for K07 notifications">
               <button type="submit">Notify Me</button>
             </form>
+            <p class="notify-note">Already on our list? We'll automatically match you when this launches.</p>
             <p class="product-notify-success" role="status" aria-live="polite"></p>
           </div>
         </article>
@@ -619,6 +558,7 @@
               <input type="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email for LK001 notifications">
               <button type="submit">Notify Me</button>
             </form>
+            <p class="notify-note">Already on our list? We'll automatically match you when this launches.</p>
             <p class="product-notify-success" role="status" aria-live="polite"></p>
           </div>
         </article>
@@ -641,6 +581,7 @@
               <input type="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email for K34 notifications">
               <button type="submit">Notify Me</button>
             </form>
+            <p class="notify-note">Already on our list? We'll automatically match you when this launches.</p>
             <p class="product-notify-success" role="status" aria-live="polite"></p>
           </div>
         </article>
@@ -677,7 +618,7 @@
           <p>TRAVRO is the answer. Not a brand that happens to make luggage. A manufacturing team that finally decided to talk directly to the people who carry it.</p>
         </div>
 
-        <a href="about.html" class="text-link" data-reveal>Read the full story <span aria-hidden="true">→</span></a>
+        <a href="#story" class="text-link" data-reveal>Read the full story <span aria-hidden="true">→</span></a>
       </div>
 
     </div>
@@ -769,6 +710,8 @@
     </div>
   </section>
 
+
+  </main>
 
   <!-- ==========================================
        SECTION 9 — FOOTER

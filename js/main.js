@@ -381,9 +381,12 @@
         errorEl.style.cssText = 'font-size:0.75rem;color:rgba(245,242,238,0.75);margin-top:0.625rem;';
         form.insertAdjacentElement('afterend', errorEl);
         emailInput.style.borderColor = 'rgba(245, 242, 238, 0.55)';
+        emailInput.setAttribute('aria-invalid', 'true');
         emailInput.focus();
         return;
       }
+
+      emailInput.setAttribute('aria-invalid', 'false');
 
       // Loading state
       var btn = form.querySelector('button[type="submit"]');
@@ -609,7 +612,8 @@
   var emailRegexNotify = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   document.querySelectorAll('.product-notify-form').forEach(function (form) {
-    var successEl   = form.nextElementSibling;
+    // Use closest() to find successEl robustly — nextElementSibling would return .notify-note
+    var successEl   = form.closest('.product-card-body').querySelector('.product-notify-success');
     var productName = form.getAttribute('data-product') || 'this product';
 
     form.addEventListener('submit', function (e) {
@@ -621,12 +625,15 @@
       // Validate
       if (!emailInput || !emailRegexNotify.test(emailInput.value.trim())) {
         emailInput.classList.add('input-invalid');
+        emailInput.setAttribute('aria-invalid', 'true');
         emailInput.focus();
         setTimeout(function () {
           emailInput.classList.remove('input-invalid');
         }, 1800);
         return;
       }
+
+      emailInput.setAttribute('aria-invalid', 'false');
 
       // Loading state
       var originalText = btn.textContent;

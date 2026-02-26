@@ -150,7 +150,9 @@
           name="email"
           placeholder="Enter your email"
           autocomplete="email"
-          required>
+          required
+          aria-describedby="hero-success"
+          aria-invalid="false">
         <button type="submit">Join the Journey</button>
       </form>
       <p class="success-message" id="hero-success" role="status" aria-live="polite">
@@ -532,11 +534,11 @@
             <p class="product-tagline">The bag that works as hard as you do.</p>
             <p class="product-price-est">Est. from $149</p>
             <form class="product-notify-form" data-product="K07" novalidate aria-label="Notify me when K07 is available">
-              <input type="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email for K07 notifications">
+              <input type="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email for K07 notifications" aria-describedby="notify-success-k07" aria-invalid="false">
               <button type="submit">Notify Me</button>
             </form>
             <p class="notify-note">Already on our list? We'll automatically match you when this launches.</p>
-            <p class="product-notify-success" role="status" aria-live="polite"></p>
+            <p class="product-notify-success" id="notify-success-k07" role="status" aria-live="polite"></p>
           </div>
         </article>
 
@@ -555,11 +557,11 @@
             <p class="product-tagline">Industrial precision. Lifetime warranty.</p>
             <p class="product-price-est">Est. from $249</p>
             <form class="product-notify-form" data-product="LK001" novalidate aria-label="Notify me when LK001 is available">
-              <input type="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email for LK001 notifications">
+              <input type="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email for LK001 notifications" aria-describedby="notify-success-lk001" aria-invalid="false">
               <button type="submit">Notify Me</button>
             </form>
             <p class="notify-note">Already on our list? We'll automatically match you when this launches.</p>
-            <p class="product-notify-success" role="status" aria-live="polite"></p>
+            <p class="product-notify-success" id="notify-success-lk001" role="status" aria-live="polite"></p>
           </div>
         </article>
 
@@ -578,11 +580,11 @@
             <p class="product-tagline">For when you pack like you live.</p>
             <p class="product-price-est">Est. from $199</p>
             <form class="product-notify-form" data-product="K34" novalidate aria-label="Notify me when K34 is available">
-              <input type="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email for K34 notifications">
+              <input type="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email for K34 notifications" aria-describedby="notify-success-k34" aria-invalid="false">
               <button type="submit">Notify Me</button>
             </form>
             <p class="notify-note">Already on our list? We'll automatically match you when this launches.</p>
-            <p class="product-notify-success" role="status" aria-live="polite"></p>
+            <p class="product-notify-success" id="notify-success-k34" role="status" aria-live="polite"></p>
           </div>
         </article>
 
@@ -734,7 +736,9 @@
             name="email"
             placeholder="Enter your email"
             autocomplete="email"
-            required>
+            required
+            aria-describedby="footer-success"
+            aria-invalid="false">
           <button type="submit">Reserve My Spot</button>
         </form>
         <p class="success-message" id="footer-success" role="status" aria-live="polite">

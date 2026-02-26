@@ -57,6 +57,9 @@
 
 <body>
 
+  <!-- Custom cursor dot (desktop pointer only — hidden via CSS on touch/mobile) -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+
   <!-- ==========================================
        HEADER — FLOATING PILL NAV
        ========================================== -->
@@ -361,6 +364,18 @@
             <span class="spec-label" aria-hidden="true">Approved lock</span>
           </div>
         </div>
+
+        <!-- Engineering detail thumbnails -->
+        <div class="stack-card-details">
+          <figure class="stack-detail-fig">
+            <div class="placeholder-img" data-label="K35 YKK zipper detail" style="aspect-ratio:4/3;"></div>
+            <figcaption>YKK RCSS zipper</figcaption>
+          </figure>
+          <figure class="stack-detail-fig">
+            <div class="placeholder-img" data-label="K35 Hinomoto wheel detail" style="aspect-ratio:4/3;"></div>
+            <figcaption>Hinomoto precision wheel</figcaption>
+          </figure>
+        </div>
       </div>
 
     </article>
@@ -456,21 +471,31 @@
        SECTION 8 — FOUNDER
        ========================================== -->
   <section class="founder" id="founder" aria-labelledby="founder-heading">
-    <div class="founder-inner container--text">
+    <div class="founder-inner">
 
-      <p class="section-label">About</p>
-
-      <h2 class="founder-heading" id="founder-heading" data-reveal>
-        Built by someone who knows both sides.
-      </h2>
-
-      <div class="founder-body" data-reveal>
-        <p>Most luggage brands are built by marketers who found a manufacturer. TRAVRO is built by someone who grew up in the industry—who spent years on both sides of the factory floor and the business class cabin.</p>
-        <p>After years in global logistics and supply chain at Maersk, then an MBA at Yale, our founder Will Zang kept asking the same question: why does everyone in the know buy their luggage from the factory direct, while everyone else pays five times the price for a label?</p>
-        <p>TRAVRO is the answer. Not a brand that happens to make luggage. A manufacturing team that finally decided to talk directly to the people who carry it.</p>
+      <!-- Pull quote col — sticky on desktop -->
+      <div class="founder-quote-col">
+        <blockquote class="founder-pull-quote">
+          "Built for people who move with intention — not accumulation."
+        </blockquote>
       </div>
 
-      <a href="about.html" class="text-link" data-reveal>Read the full story <span aria-hidden="true">→</span></a>
+      <!-- Bio col -->
+      <div class="founder-bio-col">
+        <p class="section-label">About</p>
+
+        <h2 class="founder-heading" id="founder-heading" data-reveal>
+          Built by someone who knows both sides.
+        </h2>
+
+        <div class="founder-body" data-reveal>
+          <p>Most luggage brands are built by marketers who found a manufacturer. TRAVRO is built by someone who grew up in the industry—who spent years on both sides of the factory floor and the business class cabin.</p>
+          <p>After years in global logistics and supply chain at Maersk, then an MBA at Yale, our founder Will Zang kept asking the same question: why does everyone in the know buy their luggage from the factory direct, while everyone else pays five times the price for a label?</p>
+          <p>TRAVRO is the answer. Not a brand that happens to make luggage. A manufacturing team that finally decided to talk directly to the people who carry it.</p>
+        </div>
+
+        <a href="about.html" class="text-link" data-reveal>Read the full story <span aria-hidden="true">→</span></a>
+      </div>
 
     </div>
   </section>

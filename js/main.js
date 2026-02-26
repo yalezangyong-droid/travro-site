@@ -104,26 +104,33 @@
 
 
   /* --------------------------------------------------
-     4. EDITORIAL STRIP — STAGGER SLIDE IN
+     4. EDITORIAL STRIP — CLIP-PATH WIPE IN
+     Each item reveals left-to-right via clip-path inset
      -------------------------------------------------- */
   if (!prefersReducedMotion && typeof gsap !== 'undefined') {
 
-    gsap.set('.strip-item', { opacity: 0, x: 50 });
+    var stripItems = document.querySelectorAll('.strip-item');
+    if (stripItems.length) {
+      gsap.set(stripItems, { clipPath: 'inset(0 100% 0 0)', opacity: 0 });
 
-    ScrollTrigger.create({
-      trigger: '.editorial-strip',
-      start: 'top 85%',
-      once: true,
-      onEnter: function () {
-        gsap.to('.strip-item', {
-          opacity: 1,
-          x: 0,
-          duration: 0.75,
-          stagger: 0.10,
-          ease: 'power2.out'
-        });
-      }
-    });
+      ScrollTrigger.create({
+        trigger: '.editorial-strip',
+        start: 'top 85%',
+        once: true,
+        onEnter: function () {
+          gsap.to(stripItems, {
+            clipPath: 'inset(0 0% 0 0)',
+            opacity: 1,
+            duration: 1.1,
+            stagger: 0.09,
+            ease: 'power4.out',
+            onComplete: function () {
+              stripItems.forEach(function (el) { el.style.clipPath = ''; });
+            }
+          });
+        }
+      });
+    }
   }
 
 
@@ -204,7 +211,37 @@
 
 
   /* --------------------------------------------------
-     7. STICKY STACKING PRODUCT CARDS
+     7. COMING SOON — PRODUCT CARD IMAGE WIPE
+     Each card image reveals bottom-to-top via clip-path
+     -------------------------------------------------- */
+  if (!prefersReducedMotion && typeof gsap !== 'undefined') {
+
+    var cardImages = document.querySelectorAll('.product-card-media img');
+    if (cardImages.length) {
+      gsap.set(cardImages, { clipPath: 'inset(100% 0 0 0)' });
+
+      ScrollTrigger.create({
+        trigger: '.coming-soon-grid',
+        start: 'top 80%',
+        once: true,
+        onEnter: function () {
+          gsap.to(cardImages, {
+            clipPath: 'inset(0% 0 0 0)',
+            duration: 1.25,
+            stagger: 0.12,
+            ease: 'power4.out',
+            onComplete: function () {
+              cardImages.forEach(function (el) { el.style.clipPath = ''; });
+            }
+          });
+        }
+      });
+    }
+  }
+
+
+  /* --------------------------------------------------
+     8. STICKY STACKING PRODUCT CARDS
      Each card pins at top; previous card scales+fades as next enters
      -------------------------------------------------- */
   if (!prefersReducedMotion && typeof gsap !== 'undefined' && window.innerWidth > 768) {
@@ -385,5 +422,55 @@
 
   setupForm('hero-form',   'hero-success');
   setupForm('footer-form', 'footer-success');
+
+
+  /* --------------------------------------------------
+     ACTIVE NAV — IntersectionObserver section tracking
+     Highlights nav link for section currently in view
+     -------------------------------------------------- */
+  var navSections = document.querySelectorAll('section[id]');
+  var navLinks    = document.querySelectorAll('.nav-link[href^="#"]');
+
+  if (navSections.length && navLinks.length) {
+    var navObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          navLinks.forEach(function (link) {
+            link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    navSections.forEach(function (section) { navObserver.observe(section); });
+  }
+
+
+  /* --------------------------------------------------
+     CUSTOM CURSOR — copper dot (desktop / pointer: fine only)
+     -------------------------------------------------- */
+  var cursorDot = document.querySelector('.cursor-dot');
+
+  if (cursorDot && window.matchMedia('(pointer: fine)').matches) {
+    var cx = 0, cy = 0, raf = null;
+
+    document.addEventListener('mousemove', function (e) {
+      cx = e.clientX;
+      cy = e.clientY;
+      if (!raf) {
+        raf = requestAnimationFrame(function () {
+          cursorDot.style.left = cx + 'px';
+          cursorDot.style.top  = cy + 'px';
+          raf = null;
+        });
+      }
+    });
+
+    document.querySelectorAll('a, button, [role="button"]').forEach(function (el) {
+      el.addEventListener('mouseenter', function () { cursorDot.classList.add('is-hovering'); });
+      el.addEventListener('mouseleave', function () { cursorDot.classList.remove('is-hovering'); });
+    });
+  }
 
 })();
